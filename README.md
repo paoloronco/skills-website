@@ -39,8 +39,6 @@ You can deploy it easily on **Vercel** or use **self-hosting**.
 │   ├── tsconfig.json
 │   ├── tsconfig.node.json
 │   ├── vite.config.ts
-│   ├── LICENSE
-│   ├── README.md
 │   ├── src/
 │       ├── main.tsx
 │       ├── App.tsx
