@@ -27,22 +27,39 @@ You can deploy it easily on **Vercel** or use **self-hosting**.
 ## Project Structure
 
 ```bash
-.
-├── public/
-├── src/
-│   ├── components/
-│   │   ├── footer.tsx
-│   │   ├── header.tsx
-│   ├── data/
-│   │   ├── skills.ts
-│   ├── pages/
-│   ├── styles/
-│   └── utils/
-├── .gitignore
-├── package.json
-├── README.md
-├── tsconfig.json
-└── next.config.js
+├── project/
+│   ├── .gitignore
+│   ├── .eslintrc.js (o .eslint.config.js)
+│   ├── index.html
+│   ├── package.json
+│   ├── package-lock.json
+│   ├── postcss.config.js
+│   ├── tailwind.config.js
+│   ├── tsconfig.app.json
+│   ├── tsconfig.json
+│   ├── tsconfig.node.json
+│   ├── vite.config.ts
+│   ├── LICENSE
+│   ├── README.md
+│   ├── src/
+│       ├── main.tsx
+│       ├── App.tsx
+│       ├── index.css
+│       ├── vite-env.d.ts
+│       ├── components/
+│       │   ├── Footer.tsx
+│       │   ├── Header.tsx
+│       │   ├── ScrollProgress.tsx
+│       │   ├── SkillCard.tsx
+│       │   ├── SkillCategory.tsx
+│       │   └── SkillsShowcase.tsx
+│       ├── data/
+│       │   └── skills.ts
+│       ├── types/
+│       │   └── skill.ts
+│       └── utils/
+│           ├── categoryIcons.tsx
+│           └── motionProxy.tsx
 ```
 
 ## How to Edit the Site
