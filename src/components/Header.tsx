@@ -46,13 +46,27 @@ const Header: React.FC<HeaderProps> = ({ theme, toggleTheme }) => {
         onChange={toggleTheme}
         aria-label={copy.accessibility.themeToggle}
       />
-      <div className="w-14 h-7 bg-[var(--toggle-track)] rounded-full transition-colors duration-300 relative">
+      <div
+        className="w-14 h-7 rounded-full transition-all duration-300 relative flex items-center px-1"
+        style={{
+          background: theme === 'dark'
+            ? 'linear-gradient(135deg, rgba(30,41,59,0.95), rgba(15,23,42,0.95))'
+            : 'linear-gradient(135deg, #e2e8f0, #f8fafc)',
+          border: theme === 'dark'
+            ? '1px solid rgba(148, 163, 184, 0.6)'
+            : '1px solid rgba(15, 23, 42, 0.2)',
+          boxShadow: theme === 'dark'
+            ? '0 0 12px rgba(56, 189, 248, 0.35)'
+            : 'inset 0 2px 6px rgba(15, 23, 42, 0.15)'
+        }}
+      >
         <span
-          className="absolute top-1 left-1 w-5 h-5 rounded-full shadow-md transform transition-all duration-300 flex items-center justify-center"
+          className="absolute top-1 left-1 w-5 h-5 rounded-full shadow-md transform transition-all duration-300 flex items-center justify-center border"
           style={{
             transform: theme === 'dark' ? 'translateX(28px)' : 'translateX(0)',
             color: theme === 'dark' ? '#0f172a' : '#f8fafc',
-            backgroundColor: theme === 'dark' ? '#e2e8f0' : '#0f172a'
+            backgroundColor: theme === 'dark' ? '#e2e8f0' : '#0f172a',
+            borderColor: theme === 'dark' ? 'rgba(15,23,42,0.15)' : 'rgba(248,250,252,0.35)'
           }}
         >
           {theme === 'dark' ? (

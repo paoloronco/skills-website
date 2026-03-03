@@ -1,4 +1,4 @@
-import { SkillCategory } from "../types/skill";
+﻿import { SkillCategory } from "../types/skill";
 
 const baseSkills: SkillCategory = {
   "Cloud Platforms & Architecture": [
@@ -71,13 +71,6 @@ const baseSkills: SkillCategory = {
       level: 85
     },
     {
-      name: "Databases",
-      description: "Designing, implementing, and managing relational and non-relational databases",
-      handsOn: true,
-      subSkills: ["MongoDB", "Redis", "Cloud Firestore", "Supabase"],
-      level: 99
-    },
-    {
       name: "Proxmox Virtual Environment",
       description: "Proxmox virtualization platform",
       handsOn: true,
@@ -109,15 +102,16 @@ const baseSkills: SkillCategory = {
       name: "Zero Trust Security",
       description: "Identity, network, and data controls aligned to Zero Trust principles",
       handsOn: true,
+      handsOn: true,
       level: 86,
       subSkills: ["Cloudflare Zero Trust", "Cloudflare Tunnels & Access"]
     },
     {
-      name: "Identity & Access Management",
+      name: "Identity & Access Management (IAM)",
       description: "IAM solutions across cloud platforms",
       handsOn: true,
       level: 80,
-      subSkills: ["AWS IAM", "Azure AD", "Google Cloud IAM", "Domain Controller (AD DS)","SSO", "FreeIPA", "OAuth2/OIDC"]
+      subSkills: ["AWS IAM", "Azure AD", "Google Cloud IAM", "Domain Controller (AD DS)","SSO", "FreeIPA"]
     },
     {
       name: "CSPM",
@@ -295,7 +289,12 @@ const baseSkills: SkillCategory = {
       handsOn: true,
       level: 70
     },
-
+    {
+      name: "Monitoring & Logging",
+      description: "Prometheus and Grafana implementation",
+      handsOn: true,
+      level: 65
+    },
     {
       name: "Vercel",
       description: "Vercel deployment and automation",
@@ -342,10 +341,9 @@ const baseSkills: SkillCategory = {
       subSkills: ["Google Cloud Logging", "SigNoz", "Graylog"]
     },
     {
-      name: "Monitoring & Observability Systems",
-      description: "Setting up comprehensive monitoring solutions and visibility pipelines",
+      name: "Monitoring Systems",
+      description: "Setting up comprehensive monitoring solutions",
       handsOn: true,
-      subSkills: ["Prometheus", "Grafana","Elastic Stack", "Netdata", "Glances"],
       level: 90
     },
     {
@@ -358,6 +356,13 @@ const baseSkills: SkillCategory = {
       description: "Analyzing data for security insights",
       level: 90
     },
+    {
+      name: "Observability Tooling",
+      description: "Hands-on administration of Zabbix, Elastic Stack, Netdata, and Glances for metrics, logs, and real-time alerting.",
+      handsOn: true,
+      level: 75,
+      subSkills: ["Zabbix", "Elastic Stack", "Netdata", "Glances"]
+    }
   ],
   "AI & Machine Intelligence": [
     {
@@ -435,6 +440,11 @@ const baseSkills: SkillCategory = {
       level: 75
     },
     {
+      name: "Infrastructure Monitoring",
+      description: "Tools and techniques for infrastructure visibility",
+      level: 90
+    },
+    {
       name: "Business Continuity",
       description: "Impact analysis (BIA), BCP planning and testing",
       level: 70
@@ -495,7 +505,7 @@ const baseSkills: SkillCategory = {
     },
     {
       name: "Vibe Coding",
-      description: "AI Assisted/Based Developement",
+      description: "AI Vibe Coding",
       level: 100
     }
   ],
@@ -508,8 +518,7 @@ const baseSkills: SkillCategory = {
     {
       name: "Ticketing Systems",
       description: "Ticketing systems and support tools",
-      level: 100,
-      subSkills: ["Jira Service Management","GLPI"]
+      level: 100
     },
     {
       name: "Problem Solving",
@@ -557,7 +566,7 @@ const skillTranslationsIt: Record<string, SkillTranslationEntry> = {
   "Microsoft Azure": "Servizi cloud Microsoft Azure per ambienti ibridi e modernizzazione applicativa.",
   "Oracle Cloud Infrastructure": "Compute, rete, storage e database ottimizzati erogati su Oracle Cloud Infrastructure.",
   "Cloud Architecture": "Progettazione di architetture cloud scalabili, affidabili e sicure.",
-  "Multi-Cloud Strategy": "Strategie per orchestrare servizi e dati tra più provider cloud.",
+  "Multi-Cloud Strategy": "Strategie per orchestrare servizi e dati tra piÃ¹ provider cloud.",
   "Cloud Migration": "Pianificazione e migrazione di workload applicativi verso ambienti cloud.",
   "Cloud Cost Optimization": "Metodologie FinOps per ottimizzare costi e utilizzo delle risorse cloud.",
   "Serverless Computing": "Progettazione di funzioni serverless con AWS Lambda e Google Cloud Functions.",
@@ -570,16 +579,10 @@ const skillTranslationsIt: Record<string, SkillTranslationEntry> = {
   "Cybersecurity": "Protezione completa dei sistemi informativi da attacchi e perdita di dati.",
   "Security Architecture": "Progettazione di architetture applicative e infrastrutturali sicure.",
   "Cloud Security": "Implementazione di controlli di sicurezza specifici per ambienti cloud.",
-  "Zero Trust Security": {
-    description: "Applicazione dei principi Zero Trust a identità, rete e dati.",
-    subSkills: ["Cloudflare Zero Trust", "Cloudflare Tunnels & Access"]
-  },
-  "Identity & Access Management": {
-    description: "Gestione di accessi, SSO e provisioning su piattaforme IAM multipiattaforma.",
-    subSkills: ["AWS IAM", "Azure AD", "Google Cloud IAM", "Domain Controller (AD DS)", "SSO", "FreeIPA", "OAuth2/OIDC"]
-  },
+  "Zero Trust Security": "Applicazione dei principi Zero Trust a identitÃ , rete e dati.",
+  "Identity & Access Management": "Gestione di accessi, SSO e provisioning su piattaforme IAM multipiattaforma.",
   "CSPM": {
-    description: "Cloud Security Posture Management per visibilità e remediation delle configurazioni.",
+    description: "Cloud Security Posture Management per visibilitÃ  e remediation delle configurazioni.",
     subSkills: ["Wiz", "SentinelOne"]
   },
   "CNAPP Platforms": {
@@ -598,8 +601,8 @@ const skillTranslationsIt: Record<string, SkillTranslationEntry> = {
     description: "Difesa endpoint e detection avanzata tramite soluzioni EDR/XDR.",
     subSkills: ["CrowdStrike Falcon"]
   },
-  "Threat & Vulnerability Management": "Triage, prioritizzazione e remediation di vulnerabilità e minacce.",
-  "Vulnerability Assessment": "Assessment continui per individuare e analizzare vulnerabilità.",
+  "Threat & Vulnerability Management": "Triage, prioritizzazione e remediation di vulnerabilitÃ  e minacce.",
+  "Vulnerability Assessment": "Assessment continui per individuare e analizzare vulnerabilitÃ .",
   "Penetration Testing": "Test di intrusione controllati per valutare la postura di sicurezza.",
   "Threat Intelligence": "Raccolta e analisi di intelligence sulle minacce emergenti.",
   "Incident Response": "Gestione completa del ciclo di vita degli incidenti di sicurezza.",
@@ -628,7 +631,7 @@ const skillTranslationsIt: Record<string, SkillTranslationEntry> = {
     ]
   },
   "VPN Solutions": "Implementazione di VPN site-to-site e client per accessi sicuri.",
-  "Load Balancing": "Distribuzione del traffico e soluzioni di alta disponibilità.",
+  "Load Balancing": "Distribuzione del traffico e soluzioni di alta disponibilitÃ .",
   "API Gateway": "Gestione e sicurezza delle API tramite gateway dedicati.",
   "CDN Implementation": {
     description: "Configurazione e ottimizzazione delle CDN per contenuti globali.",
@@ -645,7 +648,7 @@ const skillTranslationsIt: Record<string, SkillTranslationEntry> = {
   "GitHub": "Automazione, collaborazione e CI/CD orchestrati su GitHub.",
   "Infrastructure as Code": "Provisioning con Terraform, CloudFormation e template ARM.",
   "CI/CD Pipelines": "Automazione di build, test e deploy tramite pipeline CI/CD.",
-  "Monitoring & Logging": "Stack Prometheus e Grafana per metriche e osservabilità.",
+  "Monitoring & Logging": "Stack Prometheus e Grafana per metriche e osservabilitÃ .",
   "Vercel": "Deployment e automazione edge di applicazioni su Vercel.",
   "Event-Driven Automation": "Automazioni guidate da eventi e trigger in tempo reale.",
   "Process Automation": "Orchestrazione di workflow e processi digitali.",
@@ -700,7 +703,7 @@ const skillTranslationsIt: Record<string, SkillTranslationEntry> = {
     ]
   },
   "Data Migration": "Migrazione di workload e dati dall'on-premise al cloud.",
-  "Infrastructure Monitoring": "Strumenti e tecniche per l'osservabilità dell'infrastruttura.",
+  "Infrastructure Monitoring": "Strumenti e tecniche per l'osservabilitÃ  dell'infrastruttura.",
   "Business Continuity": "Business Impact Analysis e piani BCP con relativi test.",
   "Disaster Recovery": "Strategie e runbook di Disaster Recovery.",
   "High Availability": "Architetture ridondanti e tolleranti ai guasti.",
@@ -717,9 +720,9 @@ const skillTranslationsIt: Record<string, SkillTranslationEntry> = {
   "Ticketing Systems": "Gestione di ticket e strumenti di supporto tecnico.",
   "Problem Solving": "Problem solving strutturato per scenari tecnologici complessi.",
   "Troubleshooting": "Diagnostica trasversale su sistemi, reti e applicazioni.",
-  "Time Management": "Gestione del tempo e delle priorità.",
+  "Time Management": "Gestione del tempo e delle prioritÃ .",
   "Teamwork": "Collaborazione efficace in team multidisciplinari.",
-  "Accounting": "Competenze base di contabilità e processi finanziari.",
+  "Accounting": "Competenze base di contabilitÃ  e processi finanziari.",
   "Law": {
     description: "Conoscenze di base legali inerenti al settore IT."
   }
@@ -761,5 +764,4 @@ export const skillsByCategory: SkillCategory = orderedCategories.reduce((acc, ke
   acc[key] = baseSkills[key];
   return acc;
 }, {} as SkillCategory);
-
 
