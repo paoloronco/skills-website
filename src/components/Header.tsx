@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { ShieldCheck, Menu, X, Moon, Sun } from 'lucide-react';
+import { useLanguage } from '../contexts/LanguageContext';
+import { languageLabels, uiTranslations } from '../locales/translations';
 
 const menuLinks = [
-  { label: 'Main Website', href: 'https://paoloronco.it' },
-  { label: 'GitHub', href: 'https://github.com/paoloronco/skills-website' }
+  { key: 'mainWebsite' as const, href: 'https://paoloronco.it' },
+  { key: 'github' as const, href: 'https://github.com/paoloronco/skills-website' }
 ];
 
 interface HeaderProps {
@@ -14,6 +16,8 @@ interface HeaderProps {
 const Header: React.FC<HeaderProps> = ({ theme, toggleTheme }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { language, setLanguage } = useLanguage();
+  const copy = uiTranslations[language];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -58,6 +62,31 @@ const Header: React.FC<HeaderProps> = ({ theme, toggleTheme }) => {
     </label>
   );
 
+  const renderLanguageToggle = (variant: 'desktop' | 'mobile' = 'desktop') => (
+    <div
+      className={`flex items-center rounded-full border border-[var(--divider)] bg-[var(--toggle-track)] p-0.5 ${
+        variant === 'mobile' ? 'md:hidden mt-4' : ''
+      }`}
+      role="group"
+      aria-label={copy.accessibility.languageToggle}
+    >
+      {(Object.keys(languageLabels) as Array<keyof typeof languageLabels>).map(code => (
+        <button
+          key={`language-${code}-${variant}`}
+          type="button"
+          onClick={() => setLanguage(code)}
+          className={`px-3 py-1 text-xs font-semibold rounded-full transition-all ${
+            language === code
+              ? 'bg-cyan-400 text-slate-900'
+              : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
+          }`}
+        >
+          {languageLabels[code]}
+        </button>
+      ))}
+    </div>
+  );
+
   return (
     <header
       className={`fixed w-full z-50 transition-all duration-300 ${
@@ -71,21 +100,24 @@ const Header: React.FC<HeaderProps> = ({ theme, toggleTheme }) => {
     >
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between py-4">
-          <div className="flex items-center space-x-2">
-            <ShieldCheck className="w-8 h-8 text-cyan-400" />
-            <span className="text-xl font-semibold">Paolo Ronco - TechSkills</span>
+          <div className="flex items-center space-x-4">
+            <div className="flex items-center space-x-2">
+              <ShieldCheck className="w-8 h-8 text-cyan-400" />
+              <span className="text-xl font-semibold">Paolo Ronco - TechSkills</span>
+            </div>
+            {renderLanguageToggle('desktop')}
           </div>
 
           <div className="hidden md:flex items-center space-x-6 text-sm font-medium text-[var(--text-secondary)]">
-            {menuLinks.map(({ label, href }) => (
+            {menuLinks.map(({ key, href }) => (
               <a
-                key={label}
+                key={key}
                 href={href}
                 target="_blank"
                 rel="noreferrer"
                 className="hover:text-[var(--text-primary)] transition-colors duration-200"
               >
-                {label}
+                {copy.header[key]}
               </a>
             ))}
             {renderThemeToggle()}
@@ -104,19 +136,20 @@ const Header: React.FC<HeaderProps> = ({ theme, toggleTheme }) => {
           <div className="md:hidden animate-fade-in">
             <div className="mt-2 py-4 px-4 bg-[var(--header-bg)] backdrop-blur-sm border border-[var(--divider)] rounded-lg shadow-lg">
               <nav className="flex flex-col space-y-3 text-[var(--text-secondary)]">
-                {menuLinks.map(({ label, href }) => (
+                {menuLinks.map(({ key, href }) => (
                   <a
-                    key={`${label}-mobile`}
+                    key={`${key}-mobile`}
                     href={href}
                     target="_blank"
                     rel="noreferrer"
                     className="hover:text-[var(--text-primary)] transition-colors duration-200"
                     onClick={() => setMobileMenuOpen(false)}
                   >
-                    {label}
+                    {copy.header[key]}
                   </a>
                 ))}
               </nav>
+              {renderLanguageToggle('mobile')}
               {renderThemeToggle('mobile')}
             </div>
           </div>

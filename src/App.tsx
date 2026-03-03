@@ -4,6 +4,7 @@ import SkillsShowcase from './components/SkillsShowcase';
 import Footer from './components/Footer';
 import ScrollProgress from './components/ScrollProgress';
 import { skillsByCategory } from './data/skills';
+import { useLanguage } from './contexts/LanguageContext';
 
 type Theme = 'light' | 'dark';
 
@@ -18,6 +19,7 @@ const getInitialTheme = (): Theme => {
 function App() {
   const [searchTerm, setSearchTerm] = useState('');
   const [theme, setTheme] = useState<Theme>(getInitialTheme);
+  const { language } = useLanguage();
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
@@ -33,13 +35,18 @@ function App() {
     const term = searchTerm.trim().toLowerCase();
     if (!term) return Object.keys(skillsByCategory);
 
+    const includesTerm = (value?: string) =>
+      value ? value.toLowerCase().includes(term) : false;
+
     return Object.keys(skillsByCategory).filter(category =>
       skillsByCategory[category].some(skill =>
-        skill.name.toLowerCase().includes(term) ||
-        skill.description.toLowerCase().includes(term)
+        includesTerm(skill.name) ||
+        includesTerm(skill.description) ||
+        includesTerm(skill.translations?.[language]?.name) ||
+        includesTerm(skill.translations?.[language]?.description)
       )
     );
-  }, [searchTerm]);
+  }, [language, searchTerm]);
 
   return (
     <div
