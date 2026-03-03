@@ -23,15 +23,15 @@ const SkillsShowcase: React.FC<SkillsShowcaseProps> = ({ searchTerm, setSearchTe
 
   return (
     <div>
-      <div className="mb-16 mt-20 md:mt-28">
-        <h1 className="text-4xl md:text-6xl font-bold mb-8 text-center bg-gradient-to-r from-blue-400 via-cyan-400 to-teal-400 inline-block text-transparent bg-clip-text animate-gradient-xy">
-          Paolo Ronco - TechSkills 
+      <div className="mb-16 mt-20 md:mt-28 flex flex-col items-center text-center">
+        <h1 className="text-4xl md:text-6xl font-bold mb-8 bg-gradient-to-r from-blue-400 via-cyan-400 to-teal-400 inline-block text-transparent bg-clip-text animate-gradient-xy">
+          Paolo Ronco - TechSkills
         </h1>
-        <p className="text-gray-400 text-center md:text-lg mb-12 max-w-3xl mx-auto">
+        <p className="text-gray-400 md:text-lg mb-12 max-w-3xl">
           Expertise in cloud platforms, cybersecurity, networking, DevOps, Automation & more.
         </p>
         
-        <div className="relative max-w-md mx-auto mb-8">
+        <div className="relative w-full max-w-md mb-8">
           <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
             <Search className="h-5 w-5 text-gray-400" />
           </div>
@@ -44,7 +44,7 @@ const SkillsShowcase: React.FC<SkillsShowcaseProps> = ({ searchTerm, setSearchTe
           />
         </div>
 
-        <div className="flex flex-wrap justify-center gap-3 max-w-5xl mx-auto mb-12">
+        <div className="flex flex-wrap justify-center gap-3 w-full max-w-5xl mb-12">
           {visibleCategories.map(category => (
             <button
               key={`pill-${category}`}
