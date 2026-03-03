@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Skill } from '../types/skill';
 import { motion } from '../utils/motionProxy';
 
@@ -10,6 +10,12 @@ interface SkillCardProps {
 
 const SkillCard: React.FC<SkillCardProps> = ({ skill, index, highlight }) => {
   const [hovered, setHovered] = useState(false);
+  const [showProficiency, setShowProficiency] = useState(false);
+
+  useEffect(() => {
+    const timer = requestAnimationFrame(() => setShowProficiency(true));
+    return () => cancelAnimationFrame(timer);
+  }, []);
   
   // Highlight matching text if search term is present
   const highlightText = (text: string) => {
@@ -52,11 +58,11 @@ const SkillCard: React.FC<SkillCardProps> = ({ skill, index, highlight }) => {
           {highlightText(skill.description)}
         </p>
         
-        <div className="w-full bg-gray-700 rounded-full h-1.5">
+        <div className="w-full bg-gray-700 rounded-full h-1.5 overflow-hidden">
           <div 
             className="bg-gradient-to-r from-cyan-500 to-blue-500 h-1.5 rounded-full transition-all duration-1000 ease-out"
-            style={{ 
-              width: hovered ? `${skill.level}%` : '0%',
+            style={{
+              width: showProficiency ? `${skill.level}%` : '0%',
               transitionDelay: '0.1s'
             }}
           />
