@@ -1,14 +1,14 @@
-import { SkillCategory } from "../types/skill";
+﻿import { SkillCategory } from "../types/skill";
 
 const baseSkills: SkillCategory = {
   "Cloud Platforms & Architecture": [
     {
-      name: "Google Cloud Platform (GCP)",
+      name: "Google Cloud Platform",
       description: "Google's cloud computing services and infrastructure",
       level: 85
     },
     {
-      name: "Amazon Web Services (AWS)",
+      name: "Amazon Web Services",
       description: "Amazon Web Services infrastructure, services, and best practices",
       level: 75
     },
@@ -18,7 +18,7 @@ const baseSkills: SkillCategory = {
       level: 65
     },
     {
-      name: "Oracle Cloud Infrastructure (OCI)",
+      name: "Oracle Cloud Infrastructure",
       description: "Compute, networking, storage, and database services on Oracle Cloud",
       level: 85
     },
@@ -48,17 +48,17 @@ const baseSkills: SkillCategory = {
       level: 85
     },
     {
-      name: "Infrastructure as a Service (IaaS)",
+      name: "Infrastructure as a Service",
       description: "Provisioning and managing cloud-hosted compute, storage, and networking (Compute Engine, AWS EC2, Azure VMs)",
       level: 90
     },
     {
-      name: "Platform as a Service (PaaS)",
+      name: "Platform as a Service",
       description: "PaaS solutions on major cloud platforms (App Engine, Cloud Run, Vercel, Heroku, Railway, Render)",
       level: 90
     },
     {
-      name: "Software as a Service (SaaS)",
+      name: "Software as a Service",
       description: "Delivering and integrating ready-to-use applications via the cloud (Microsoft 365, Google Workspace, Slack, Zoom)",
       level: 90
     },
@@ -111,7 +111,7 @@ const baseSkills: SkillCategory = {
       subSkills: ["Wiz", "SentinelOne"]
     },
     {
-      name: "CNAPP Platforms (Strategy & Wiz)",
+      name: "CNAPP Platforms",
       description: "Combining CNAPP blueprints with Wiz to secure build pipelines, cloud runtime, and compliance.",
       level: 90,
       subSkills: ["CNAPP Strategy", "Wiz (CNAPP)"]
@@ -122,7 +122,7 @@ const baseSkills: SkillCategory = {
       level: 80
     },
     {
-      name: "SIEM Platforms (Splunk & Wazuh)",
+      name: "SIEM Platforms",
       description: "Design, onboarding and detection engineering on Splunk Enterprise Security and Wazuh SIEM/XDR.",
       level: 78,
       subSkills: ["Splunk (SIEM)", "Wazuh (SIEM/XDR)"]
@@ -179,7 +179,7 @@ const baseSkills: SkillCategory = {
       level: 65
     },
     {
-      name: "Hardening (OS & Network)",
+      name: "Hardening",
       description: "System and network hardening baselines and benchmarks",
       level: 70
     },
@@ -319,7 +319,7 @@ const baseSkills: SkillCategory = {
       level: 90
     },
     {
-      name: "Low-Code Automation (Make.com & n8n)",
+      name: "Low-Code Automation",
       description: "Designing composable automations on Make.com and n8n with API integrations and human-in-the-loop steps.",
       level: 90,
       subSkills: ["Make.com", "n8n"]
@@ -353,7 +353,7 @@ const baseSkills: SkillCategory = {
       level: 90
     },
     {
-      name: "Observability Tooling (Zabbix, Elastic, Netdata, Glances)",
+      name: "Observability Tooling",
       description: "Hands-on administration of Zabbix, Elastic Stack, Netdata, and Glances for metrics, logs, and real-time alerting.",
       level: 75,
       subSkills: ["Zabbix", "Elastic Stack", "Netdata", "Glances"]
@@ -367,12 +367,12 @@ const baseSkills: SkillCategory = {
       subSkills: ["Qdrant", "MongoDB Atlas Vector Store"]
     },
     {
-      name: "Retrieval-Augmented Generation (RAG)",
+      name: "Retrieval-Augmented Generation",
       description: "Knowledge-grounded pipelines for AI assistants",
       level: 85
     },
     {
-      name: "MCP (Model Context Protocol)",
+      name: "MCP",
       description: "Implement and operate MCP servers/clients and tool providers",
       level: 90
     },
@@ -468,17 +468,17 @@ const baseSkills: SkillCategory = {
     {
       name: "Node.js",
       description: "JavaScript runtime environment for backend and full-stack web development",
-      level: 80
+      level: 40
     },
     {
       name: "Python",
       description: "General-purpose programming and automation",
-      level: 55
+      level: 40
     },
     {
       name: "Android Development",
       description: "Android app development using Java and Kotlin",
-      level: 60
+      level: 50
     },
     {
       name: "WordPress",
@@ -486,9 +486,9 @@ const baseSkills: SkillCategory = {
       level: 90
     },
     {
-      name: "Chrome Extensions",
+      name: "Chrome Extensions Development",
       description: "Design and development of custom Chrome browser extensions",
-      level: 90
+      level: 80
     },
     {
       name: "Vibe Coding",
@@ -505,7 +505,7 @@ const baseSkills: SkillCategory = {
     {
       name: "Ticketing Systems",
       description: "Ticketing systems and support tools",
-      level: 85
+      level: 100
     },
     {
       name: "Problem Solving",
@@ -520,22 +520,22 @@ const baseSkills: SkillCategory = {
     {
       name: "Time Management",
       description: "Time management and prioritization",
-      level: 70
+      level: 100
     },
     {
       name: "Teamwork",
       description: "Teamwork and collaboration skills",
-      level: 70
+      level: 100 
     },
     {
       name: "Accounting",
       description: "Accounting and financial",
-      level: 60
+      level: 30
     },
     {
       name: "Law",
       description: "Law and legal knowledge",
-      level: 50
+      level: 30
     }
   ]
 };
@@ -548,38 +548,38 @@ interface SkillTranslation {
 type SkillTranslationEntry = SkillTranslation | string;
 
 const skillTranslationsIt: Record<string, SkillTranslationEntry> = {
-  "Google Cloud Platform (GCP)": "Servizi e infrastrutture cloud di Google per calcolo, storage e AI gestite end-to-end.",
-  "Amazon Web Services (AWS)": "Piattaforma AWS che copre compute, rete, storage e best practice Well-Architected.",
+  "Google Cloud Platform": "Servizi e infrastrutture cloud di Google per calcolo, storage e AI gestite end-to-end.",
+  "Amazon Web Services": "Piattaforma AWS che copre compute, rete, storage e best practice Well-Architected.",
   "Microsoft Azure": "Servizi cloud Microsoft Azure per ambienti ibridi e modernizzazione applicativa.",
-  "Oracle Cloud Infrastructure (OCI)": "Compute, rete, storage e database ottimizzati erogati su Oracle Cloud Infrastructure.",
+  "Oracle Cloud Infrastructure": "Compute, rete, storage e database ottimizzati erogati su Oracle Cloud Infrastructure.",
   "Cloud Architecture": "Progettazione di architetture cloud scalabili, affidabili e sicure.",
-  "Multi-Cloud Strategy": "Strategie per orchestrare servizi e dati tra più provider cloud.",
+  "Multi-Cloud Strategy": "Strategie per orchestrare servizi e dati tra piÃ¹ provider cloud.",
   "Cloud Migration": "Pianificazione e migrazione di workload applicativi verso ambienti cloud.",
   "Cloud Cost Optimization": "Metodologie FinOps per ottimizzare costi e utilizzo delle risorse cloud.",
   "Serverless Computing": "Progettazione di funzioni serverless con AWS Lambda e Google Cloud Functions.",
-  "Infrastructure as a Service (IaaS)": "Provisioning di compute, storage e rete su piattaforme IaaS come Compute Engine, EC2 e Azure VM.",
-  "Platform as a Service (PaaS)": "Erogazione di applicazioni su PaaS come App Engine, Cloud Run, Vercel, Heroku, Railway e Render.",
-  "Software as a Service (SaaS)": "Integrazione e gestione di suite SaaS quali Microsoft 365, Google Workspace, Slack e Zoom.",
+  "Infrastructure as a Service": "Provisioning di compute, storage e rete su piattaforme IaaS come Compute Engine, EC2 e Azure VM.",
+  "Platform as a Service": "Erogazione di applicazioni su PaaS come App Engine, Cloud Run, Vercel, Heroku, Railway e Render.",
+  "Software as a Service": "Integrazione e gestione di suite SaaS quali Microsoft 365, Google Workspace, Slack e Zoom.",
   "Hybrid Cloud": "Soluzioni ibride che federano risorse on-premise e cloud pubblico.",
   "Proxmox Virtual Environment": "Virtualizzazione e clustering con Proxmox VE per ambienti self-hosted.",
   "VMware ESXi": "Gestione dell'hypervisor VMware ESXi per infrastrutture virtuali enterprise.",
   "Cybersecurity": "Protezione completa dei sistemi informativi da attacchi e perdita di dati.",
   "Security Architecture": "Progettazione di architetture applicative e infrastrutturali sicure.",
   "Cloud Security": "Implementazione di controlli di sicurezza specifici per ambienti cloud.",
-  "Zero Trust Security": "Applicazione dei principi Zero Trust a identità, rete e dati.",
+  "Zero Trust Security": "Applicazione dei principi Zero Trust a identitÃ , rete e dati.",
   "Identity & Access Management": "Gestione di accessi, SSO e provisioning su piattaforme IAM multipiattaforma.",
   "CSPM": {
-    description: "Cloud Security Posture Management per visibilità e remediation delle configurazioni.",
+    description: "Cloud Security Posture Management per visibilitÃ  e remediation delle configurazioni.",
     subSkills: ["Wiz", "SentinelOne"]
   },
-  "CNAPP Platforms (Strategy & Wiz)": {
+  "CNAPP Platforms": {
     description: "Strategia CNAPP end-to-end con implementazione di Wiz per copertura agentless, compliance e protezione del runtime.",
     subSkills: ["CNAPP Strategy", "Wiz (CNAPP)"]
   },
   "SIEM Solutions": {
     description: "Implementazione di piattaforme SIEM per raccogliere e correlare eventi di sicurezza."
   },
-  "SIEM Platforms (Splunk & Wazuh)": {
+  "SIEM Platforms": {
     description: "Ingegneria e gestione di Splunk Enterprise Security e Wazuh per onboarding dati, correlazioni e incident response.",
     subSkills: ["Splunk (SIEM)", "Wazuh (SIEM/XDR)"]
   },
@@ -588,15 +588,15 @@ const skillTranslationsIt: Record<string, SkillTranslationEntry> = {
     description: "Difesa endpoint e detection avanzata tramite soluzioni EDR/XDR.",
     subSkills: ["CrowdStrike Falcon"]
   },
-  "Threat & Vulnerability Management": "Triage, prioritizzazione e remediation di vulnerabilità e minacce.",
-  "Vulnerability Assessment": "Assessment continui per individuare e analizzare vulnerabilità.",
+  "Threat & Vulnerability Management": "Triage, prioritizzazione e remediation di vulnerabilitÃ  e minacce.",
+  "Vulnerability Assessment": "Assessment continui per individuare e analizzare vulnerabilitÃ .",
   "Penetration Testing": "Test di intrusione controllati per valutare la postura di sicurezza.",
   "Threat Intelligence": "Raccolta e analisi di intelligence sulle minacce emergenti.",
   "Incident Response": "Gestione completa del ciclo di vita degli incidenti di sicurezza.",
   "Risk Management": "Identificazione, analisi e trattamento dei rischi cyber e IT.",
   "Security Compliance": "Allineamento a requisiti normativi e standard di sicurezza.",
   "OSINT": "Raccolta e analisi OSINT per investigazioni e monitoraggio.",
-  "Hardening (OS & Network)": "Definizione di baseline e hardening per sistemi e reti.",
+  "Hardening": "Definizione di baseline e hardening per sistemi e reti.",
   "Cryptography": "Applicazione di concetti e pratiche di crittografia applicata.",
   "Network Protocols": "Gestione di protocolli HTTP/S, TCP/IP, UDP e stack di rete correlati.",
   "TCP/IP Fundamentals": "Fondamenti OSI/TCP-IP, subnetting e tecniche di diagnostica.",
@@ -618,7 +618,7 @@ const skillTranslationsIt: Record<string, SkillTranslationEntry> = {
     ]
   },
   "VPN Solutions": "Implementazione di VPN site-to-site e client per accessi sicuri.",
-  "Load Balancing": "Distribuzione del traffico e soluzioni di alta disponibilità.",
+  "Load Balancing": "Distribuzione del traffico e soluzioni di alta disponibilitÃ .",
   "API Gateway": "Gestione e sicurezza delle API tramite gateway dedicati.",
   "CDN Implementation": {
     description: "Configurazione e ottimizzazione delle CDN per contenuti globali.",
@@ -635,12 +635,12 @@ const skillTranslationsIt: Record<string, SkillTranslationEntry> = {
   "GitHub": "Automazione, collaborazione e CI/CD orchestrati su GitHub.",
   "Infrastructure as Code": "Provisioning con Terraform, CloudFormation e template ARM.",
   "CI/CD Pipelines": "Automazione di build, test e deploy tramite pipeline CI/CD.",
-  "Monitoring & Logging": "Stack Prometheus e Grafana per metriche e osservabilità.",
+  "Monitoring & Logging": "Stack Prometheus e Grafana per metriche e osservabilitÃ .",
   "Vercel": "Deployment e automazione edge di applicazioni su Vercel.",
   "Event-Driven Automation": "Automazioni guidate da eventi e trigger in tempo reale.",
   "Process Automation": "Orchestrazione di workflow e processi digitali.",
   "Serverless Workflows": "Progettazione di workflow serverless orchestrati.",
-  "Low-Code Automation (Make.com & n8n)": {
+  "Low-Code Automation": {
     description: "Automazioni low-code evolute su Make.com e n8n con orchestrazione di API e workflow human-in-the-loop.",
     subSkills: ["Make.com", "n8n"]
   },
@@ -652,7 +652,7 @@ const skillTranslationsIt: Record<string, SkillTranslationEntry> = {
   "Monitoring Systems": "Implementazione di soluzioni di monitoraggio end-to-end.",
   "Performance Analysis": "Valutazione e ottimizzazione delle prestazioni di sistemi e app.",
   "Security Analytics": "Analisi dei dati per individuare pattern e segnali di minaccia.",
-  "Observability Tooling (Zabbix, Elastic, Netdata, Glances)": {
+  "Observability Tooling": {
     description: "Gestione di Zabbix, Elastic Stack, Netdata e Glances per metriche, log e alerting real-time.",
     subSkills: ["Zabbix", "Elastic Stack", "Netdata", "Glances"]
   },
@@ -660,8 +660,8 @@ const skillTranslationsIt: Record<string, SkillTranslationEntry> = {
     description: "Progettazione di schemi e ricerche su Pinecone, Weaviate e database vettoriali affini.",
     subSkills: ["Qdrant", "MongoDB Atlas Vector Store"]
   },
-  "Retrieval-Augmented Generation (RAG)": "Pipeline RAG per assistenti AI contestualizzati.",
-  "MCP (Model Context Protocol)": "Implementazione di server/client MCP e provider di strumenti.",
+  "Retrieval-Augmented Generation": "Pipeline RAG per assistenti AI contestualizzati.",
+  "MCP": "Implementazione di server/client MCP e provider di strumenti.",
   "Chatbot Development": "Design e delivery di chatbot multicanale.",
   "AI Agent Orchestration": "Costruzione di agenti autonomi con strumenti, memoria e guardrail.",
   "Hugging Face Ecosystem": "Uso di modelli, dataset, Inference Endpoints e Spaces di Hugging Face.",
@@ -690,7 +690,7 @@ const skillTranslationsIt: Record<string, SkillTranslationEntry> = {
     ]
   },
   "Data Migration": "Migrazione di workload e dati dall'on-premise al cloud.",
-  "Infrastructure Monitoring": "Strumenti e tecniche per l'osservabilità dell'infrastruttura.",
+  "Infrastructure Monitoring": "Strumenti e tecniche per l'osservabilitÃ  dell'infrastruttura.",
   "Business Continuity": "Business Impact Analysis e piani BCP con relativi test.",
   "Disaster Recovery": "Strategie e runbook di Disaster Recovery.",
   "High Availability": "Architetture ridondanti e tolleranti ai guasti.",
@@ -707,9 +707,9 @@ const skillTranslationsIt: Record<string, SkillTranslationEntry> = {
   "Ticketing Systems": "Gestione di ticket e strumenti di supporto tecnico.",
   "Problem Solving": "Problem solving strutturato per scenari tecnologici complessi.",
   "Troubleshooting": "Diagnostica trasversale su sistemi, reti e applicazioni.",
-  "Time Management": "Gestione del tempo e delle priorità.",
+  "Time Management": "Gestione del tempo e delle prioritÃ .",
   "Teamwork": "Collaborazione efficace in team multidisciplinari.",
-  "Accounting": "Competenze base di contabilità e processi finanziari.",
+  "Accounting": "Competenze base di contabilitÃ  e processi finanziari.",
   "Law": {
     description: "Conoscenze di base legali inerenti al settore IT."
   }
@@ -751,3 +751,4 @@ export const skillsByCategory: SkillCategory = orderedCategories.reduce((acc, ke
   acc[key] = baseSkills[key];
   return acc;
 }, {} as SkillCategory);
+
