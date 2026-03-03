@@ -68,7 +68,7 @@ const SkillCard: React.FC<SkillCardProps> = ({ skill, index, highlight }) => {
         filter: 'drop-shadow(0 15px 35px rgba(14, 165, 233, 0.35))'
       }}
       style={{ transformStyle: 'preserve-3d', willChange: 'transform', perspective: 1200 }}
-      className={`h-full min-h-[260px] flex flex-col bg-gradient-to-br from-gray-800 via-gray-850 to-gray-900 border border-gray-700 rounded-xl overflow-hidden transition-all duration-300 ${
+      className={`h-full flex flex-col bg-gradient-to-br from-gray-800 via-gray-850 to-gray-900 border border-gray-700 rounded-xl overflow-hidden transition-all duration-300 ${
         hovered ? 'shadow-xl shadow-cyan-500/20' : 'shadow-md shadow-black/30'
       }`}
       onMouseEnter={() => {
@@ -91,10 +91,7 @@ const SkillCard: React.FC<SkillCardProps> = ({ skill, index, highlight }) => {
           />
         </div>
         
-        <p 
-          className="text-sm text-gray-400 mb-4 flex-1 overflow-hidden"
-          style={{ display: '-webkit-box', WebkitLineClamp: 3, WebkitBoxOrient: 'vertical' }}
-        >
+        <p className="text-sm text-gray-400 mb-4">
           {highlightText(skill.description)}
         </p>
 

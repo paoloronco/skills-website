@@ -14,6 +14,13 @@ const SkillsShowcase: React.FC<SkillsShowcaseProps> = ({ searchTerm, setSearchTe
     setSearchTerm(e.target.value);
   };
 
+  const scrollToCategory = (category: string) => {
+    const element = document.getElementById(category.replace(/\s+/g, '-').toLowerCase());
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <div>
       <div className="mb-16 mt-20 md:mt-28">
@@ -24,7 +31,7 @@ const SkillsShowcase: React.FC<SkillsShowcaseProps> = ({ searchTerm, setSearchTe
           Expertise in cloud platforms, cybersecurity, networking, DevOps, Automation & more.
         </p>
         
-        <div className="relative max-w-md mx-auto mb-12">
+        <div className="relative max-w-md mx-auto mb-8">
           <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
             <Search className="h-5 w-5 text-gray-400" />
           </div>
@@ -35,6 +42,19 @@ const SkillsShowcase: React.FC<SkillsShowcaseProps> = ({ searchTerm, setSearchTe
             value={searchTerm}
             onChange={handleSearch}
           />
+        </div>
+
+        <div className="flex flex-wrap justify-center gap-3 max-w-5xl mx-auto mb-12">
+          {visibleCategories.map(category => (
+            <button
+              key={`pill-${category}`}
+              type="button"
+              onClick={() => scrollToCategory(category)}
+              className="px-4 py-2 rounded-full border border-cyan-500/40 bg-gray-800/60 text-sm font-medium text-gray-200 hover:bg-cyan-500/15 hover:border-cyan-400 hover:text-white transition-all duration-200 shadow-sm shadow-black/30 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-900"
+            >
+              {category}
+            </button>
+          ))}
         </div>
       </div>
 

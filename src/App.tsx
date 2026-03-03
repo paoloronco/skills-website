@@ -23,7 +23,7 @@ function App() {
   return (
     <div className="bg-gradient-to-br from-gray-900 to-gray-950 min-h-screen text-white">
       <ScrollProgress />
-      <Header visibleCategories={visibleCategories} />
+      <Header />
       <main className="container mx-auto px-4 py-16">
         <SkillsShowcase
           searchTerm={searchTerm}
