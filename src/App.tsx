@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
+import Lenis from 'lenis';
 import Header from './components/Header';
 import SkillsShowcase from './components/SkillsShowcase';
 import Footer from './components/Footer';
@@ -20,6 +21,26 @@ function App() {
   const [searchTerm, setSearchTerm] = useState('');
   const [theme, setTheme] = useState<Theme>(getInitialTheme);
   const { language } = useLanguage();
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+
+    const lenis = new Lenis({
+      lerp: 0.08,
+      smoothWheel: true,
+      smoothTouch: false
+    });
+
+    let frame = requestAnimationFrame(function raf(time) {
+      lenis.raf(time);
+      frame = requestAnimationFrame(raf);
+    });
+
+    return () => {
+      cancelAnimationFrame(frame);
+      lenis.destroy();
+    };
+  }, []);
 
   useEffect(() => {
     if (typeof window === 'undefined') return;

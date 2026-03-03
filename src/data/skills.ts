@@ -1,15 +1,15 @@
-import { SkillCategory } from "../types/skill";
+﻿import { SkillCategory } from "../types/skill";
 
 const baseSkills: SkillCategory = {
   "Cloud Platforms & Architecture": [
     {
-      name: "Google Cloud Platform",
+      name: "Google Cloud (GCP)",
       description: "Google's cloud computing services and infrastructure",
       handsOn: true,
       level: 85
     },
     {
-      name: "Amazon Web Services",
+      name: "Amazon Web Services (AWS)",
       description: "Amazon Web Services infrastructure, services, and best practices",
       handsOn: true,
       level: 75
@@ -20,7 +20,7 @@ const baseSkills: SkillCategory = {
       level: 65
     },
     {
-      name: "Oracle Cloud Infrastructure",
+      name: "Oracle Cloud Infrastructure (OCI)",
       description: "Compute, networking, storage, and database services on Oracle Cloud",
       handsOn: true,
       level: 85
@@ -109,46 +109,46 @@ const baseSkills: SkillCategory = {
       name: "Zero Trust Security",
       description: "Identity, network, and data controls aligned to Zero Trust principles",
       handsOn: true,
-      level: 86,
+      level: 90,
       subSkills: ["Cloudflare Zero Trust", "Cloudflare Tunnels & Access"]
     },
     {
-      name: "Identity & Access Management",
+      name: "Identity & Access Management (IAM)",
       description: "IAM solutions across cloud platforms",
       handsOn: true,
-      level: 80,
+      level: 75,
       subSkills: ["AWS IAM", "Azure AD", "Google Cloud IAM", "Domain Controller (AD DS)","SSO", "FreeIPA", "OAuth2/OIDC"]
     },
     {
-      name: "CSPM",
+      name: "CSPM (Cloud Security Posture Management) Platforms",
       description: "Cloud Security Posture Management",
       handsOn: true,
       level: 90,
       subSkills: ["Wiz", "SentinelOne"]
     },
     {
-      name: "CNAPP Platforms",
+      name: "CNAPP (Cloud Native Application Protection Platforms) Platforms",
       description: "Combining CNAPP blueprints with Wiz to secure build pipelines, cloud runtime, and compliance.",
       level: 90,
       handsOn: true,
-      subSkills: ["CNAPP Strategy", "Wiz (CNAPP)"]
+      subSkills: ["Wiz (CNAPP)"]
     },
     {
-      name: "SIEM Platforms",
+      name: "SIEM (Security Information and Event Management) Platforms",
       description: "Design, onboarding and detection engineering on Splunk Enterprise Security and Wazuh SIEM/XDR.",
-      level: 70,
+      level: 65,
       handsOn: true,
       subSkills: ["Splunk (SIEM)", "Wazuh (SIEM/XDR)"]
     },
     {
-      name: "SOAR",
+      name: "SOAR (Security Orchestration, Automation and Response) Platforms",
       description: "Security Orchestration, Automation and Response",
-      level: 60
+      level: 50
     },
     {
-      name: "EDR/XDR",
+      name: "EDR/XDR  (Endpoint Detection and Response/Extended Detection and Response) Platforms",
       description: "Endpoint/Extended Detection and Response",
-      level: 70,
+      level: 50,
       subSkills: ["CrowdStrike Falcon"]
     },
     {
@@ -164,7 +164,7 @@ const baseSkills: SkillCategory = {
     {
       name: "Penetration Testing",
       description: "Simulated attacks to evaluate system security",
-      level: 65
+      level: 50
     },
     {
       name: "Threat Intelligence",
@@ -189,7 +189,7 @@ const baseSkills: SkillCategory = {
     {
       name: "OSINT",
       description: "Open Source Intelligence gathering and analysis",
-      level: 65
+      level: 50
     },
     {
       name: "Hardening",
@@ -199,7 +199,7 @@ const baseSkills: SkillCategory = {
     {
       name: "Cryptography",
       description: "Concepts and practices of applied cryptography",
-      level: 60
+      level: 50
     }
   ],
   "Networking & Edge": [
@@ -317,6 +317,7 @@ const baseSkills: SkillCategory = {
     {
       name: "Serverless Workflows",
       description: "Designing event-driven serverless processes",
+      handsOn: true,
       level: 90
     },
     {
