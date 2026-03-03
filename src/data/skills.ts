@@ -98,7 +98,7 @@ const baseSkills: SkillCategory = {
     {
       name: "Zero Trust Security",
       description: "Identity, network, and data controls aligned to Zero Trust principles",
-      level: 86
+      level: 86,
       subSkills: ["Cloudflare Zero Trust", "Cloudflare Tunnels & Access"]
     },
     {
