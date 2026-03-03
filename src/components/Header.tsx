@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Code2, Menu, X, Moon, Sun } from 'lucide-react';
+import { ShieldCheck, Menu, X, Moon, Sun } from 'lucide-react';
 
 const menuLinks = [
   { label: 'Main Website', href: 'https://paoloronco.it' },
@@ -72,7 +72,7 @@ const Header: React.FC<HeaderProps> = ({ theme, toggleTheme }) => {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between py-4">
           <div className="flex items-center space-x-2">
-            <Code2 className="w-8 h-8 text-cyan-400" />
+            <ShieldCheck className="w-8 h-8 text-cyan-400" />
             <span className="text-xl font-semibold">Paolo Ronco - TechSkills</span>
           </div>
 

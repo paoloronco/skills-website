@@ -24,7 +24,10 @@ const SkillsShowcase: React.FC<SkillsShowcaseProps> = ({ searchTerm, setSearchTe
   return (
     <div>
       <div className="mb-16 mt-20 md:mt-28 flex flex-col items-center text-center">
-        <h1 className="text-4xl md:text-6xl font-bold mb-8 bg-gradient-to-r from-blue-400 via-cyan-400 to-teal-400 inline-block text-transparent bg-clip-text animate-gradient-xy">
+        <h1
+          className="text-4xl md:text-6xl font-bold mb-8 inline-block text-transparent bg-clip-text animate-gradient-xy"
+          style={{ backgroundImage: 'var(--hero-gradient)' }}
+        >
           Paolo Ronco - TechSkills
         </h1>
         <p className="text-[var(--text-secondary)] md:text-lg mb-12 max-w-3xl">
