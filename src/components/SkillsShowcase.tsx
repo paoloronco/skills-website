@@ -27,18 +27,22 @@ const SkillsShowcase: React.FC<SkillsShowcaseProps> = ({ searchTerm, setSearchTe
         <h1 className="text-4xl md:text-6xl font-bold mb-8 bg-gradient-to-r from-blue-400 via-cyan-400 to-teal-400 inline-block text-transparent bg-clip-text animate-gradient-xy">
           Paolo Ronco - TechSkills
         </h1>
-        <p className="text-gray-400 md:text-lg mb-12 max-w-3xl">
+        <p className="text-[var(--text-secondary)] md:text-lg mb-12 max-w-3xl">
           Expertise in cloud platforms, cybersecurity, networking, DevOps, Automation & more.
         </p>
         
         <div className="relative w-full max-w-md mb-8">
           <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-            <Search className="h-5 w-5 text-gray-400" />
+            <Search className="h-5 w-5 text-[var(--text-secondary)]" />
           </div>
           <input
             type="text"
             placeholder="Search skills..."
-            className="block w-full bg-gray-800/50 border border-gray-700 rounded-lg py-3 pl-10 pr-3 text-gray-300 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all duration-300"
+            className="block w-full rounded-lg py-3 pl-10 pr-3 text-[var(--text-primary)] placeholder-[var(--text-secondary)] focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all duration-300"
+            style={{
+              backgroundColor: 'var(--input-bg)',
+              borderColor: 'var(--input-border)'
+            }}
             value={searchTerm}
             onChange={handleSearch}
           />
@@ -50,7 +54,13 @@ const SkillsShowcase: React.FC<SkillsShowcaseProps> = ({ searchTerm, setSearchTe
               key={`pill-${category}`}
               type="button"
               onClick={() => scrollToCategory(category)}
-              className="px-4 py-2 rounded-full border border-cyan-500/40 bg-gray-800/60 text-sm font-medium text-gray-200 hover:bg-cyan-500/15 hover:border-cyan-400 hover:text-white transition-all duration-200 shadow-sm shadow-black/30 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-900"
+              className="px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 hover:-translate-y-0.5"
+              style={{
+                backgroundColor: 'var(--pill-bg)',
+                borderColor: 'var(--pill-border)',
+                color: 'var(--pill-text)',
+                boxShadow: 'var(--pill-shadow)'
+              }}
             >
               {category}
             </button>

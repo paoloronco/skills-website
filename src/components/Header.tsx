@@ -1,12 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import { Code2, Menu, X } from 'lucide-react';
+import { Code2, Menu, X, Moon, Sun } from 'lucide-react';
 
 const menuLinks = [
   { label: 'Main Website', href: 'https://paoloronco.it' },
   { label: 'GitHub', href: 'https://github.com/paoloronco/skills-website' }
 ];
 
-const Header: React.FC = () => {
+interface HeaderProps {
+  theme: 'light' | 'dark';
+  toggleTheme: () => void;
+}
+
+const Header: React.FC<HeaderProps> = ({ theme, toggleTheme }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -21,11 +26,48 @@ const Header: React.FC = () => {
     };
   }, []);
 
+  const renderThemeToggle = (variant: 'desktop' | 'mobile' = 'desktop') => (
+    <label
+      className={`relative inline-flex items-center cursor-pointer ${
+        variant === 'desktop' ? '' : 'mt-4'
+      }`}
+    >
+      <input
+        type="checkbox"
+        className="sr-only"
+        checked={theme === 'dark'}
+        onChange={toggleTheme}
+        aria-label="Toggle dark mode"
+      />
+      <div className="w-14 h-7 bg-[var(--toggle-track)] rounded-full transition-colors duration-300 relative">
+        <span
+          className="absolute top-1 left-1 w-5 h-5 rounded-full shadow-md transform transition-all duration-300 flex items-center justify-center"
+          style={{
+            transform: theme === 'dark' ? 'translateX(28px)' : 'translateX(0)',
+            color: theme === 'dark' ? '#0f172a' : '#f8fafc',
+            backgroundColor: theme === 'dark' ? '#e2e8f0' : '#0f172a'
+          }}
+        >
+          {theme === 'dark' ? (
+            <Moon className="w-3.5 h-3.5" />
+          ) : (
+            <Sun className="w-3.5 h-3.5" />
+          )}
+        </span>
+      </div>
+    </label>
+  );
+
   return (
     <header
       className={`fixed w-full z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-gray-900/95 backdrop-blur-sm shadow-md' : 'bg-transparent'
+        isScrolled ? 'shadow-lg' : ''
       }`}
+      style={{
+        backgroundColor: isScrolled ? 'var(--header-bg)' : 'transparent',
+        backdropFilter: isScrolled ? 'blur(12px)' : 'none',
+        borderBottom: isScrolled ? `1px solid var(--divider)` : '1px solid transparent'
+      }}
     >
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between py-4">
@@ -34,22 +76,23 @@ const Header: React.FC = () => {
             <span className="text-xl font-semibold">Paolo Ronco - TechSkills</span>
           </div>
 
-          <nav className="hidden md:flex items-center space-x-6 text-sm font-medium text-gray-300">
+          <div className="hidden md:flex items-center space-x-6 text-sm font-medium text-[var(--text-secondary)]">
             {menuLinks.map(({ label, href }) => (
               <a
                 key={label}
                 href={href}
                 target="_blank"
                 rel="noreferrer"
-                className="hover:text-white transition-colors duration-200"
+                className="hover:text-[var(--text-primary)] transition-colors duration-200"
               >
                 {label}
               </a>
             ))}
-          </nav>
+            {renderThemeToggle()}
+          </div>
 
           <button
-            className="md:hidden text-gray-300 hover:text-white transition-colors duration-200"
+            className="md:hidden text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors duration-200"
             onClick={() => setMobileMenuOpen(prev => !prev)}
             aria-label="Toggle menu"
           >
@@ -59,21 +102,22 @@ const Header: React.FC = () => {
 
         {mobileMenuOpen && (
           <div className="md:hidden animate-fade-in">
-            <div className="mt-2 py-4 px-4 bg-gray-900/95 backdrop-blur-sm border border-gray-800 rounded-lg shadow-lg">
-              <nav className="flex flex-col space-y-3 text-gray-200">
+            <div className="mt-2 py-4 px-4 bg-[var(--header-bg)] backdrop-blur-sm border border-[var(--divider)] rounded-lg shadow-lg">
+              <nav className="flex flex-col space-y-3 text-[var(--text-secondary)]">
                 {menuLinks.map(({ label, href }) => (
                   <a
                     key={`${label}-mobile`}
                     href={href}
                     target="_blank"
                     rel="noreferrer"
-                    className="hover:text-white transition-colors duration-200"
+                    className="hover:text-[var(--text-primary)] transition-colors duration-200"
                     onClick={() => setMobileMenuOpen(false)}
                   >
                     {label}
                   </a>
                 ))}
               </nav>
+              {renderThemeToggle('mobile')}
             </div>
           </div>
         )}

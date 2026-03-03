@@ -30,10 +30,13 @@ const SkillCategory: React.FC<SkillCategoryProps> = ({ category, skills, searchT
   return (
     <section id={categoryId} className="scroll-mt-20">
       <div className="flex items-center mb-8 group">
-        <div className="bg-gradient-to-r from-gray-800 to-gray-800/30 p-4 rounded-lg mr-4 transition-transform duration-500 group-hover:scale-110">
+        <div
+          className="p-4 rounded-lg mr-4 transition-transform duration-500 group-hover:scale-110 border border-transparent"
+          style={{ backgroundColor: 'var(--icon-bg)', borderColor: 'var(--divider)' }}
+        >
           <CategoryIcon className="w-8 h-8 text-cyan-400" />
         </div>
-        <h2 className="text-3xl font-bold text-white">{category}</h2>
+        <h2 className="text-3xl font-bold text-[var(--text-primary)]">{category}</h2>
       </div>
       
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 items-stretch">
