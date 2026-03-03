@@ -1,4 +1,5 @@
 import { useMemo, useState } from 'react';
+import { Analytics } from '@vercel/analytics/react';
 import Header from './components/Header';
 import SkillsShowcase from './components/SkillsShowcase';
 import Footer from './components/Footer';
@@ -32,6 +33,7 @@ function App() {
         />
       </main>
       <Footer />
+      <Analytics />
     </div>
   );
 }
