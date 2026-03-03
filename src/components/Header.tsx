@@ -22,10 +22,30 @@ const Header: React.FC = () => {
       }`}
     >
       <div className="container mx-auto px-4">
-        <div className="flex justify-between items-center py-4">
+        <div className="flex flex-col items-center justify-center gap-2 py-4 md:py-5 text-center">
+          <nav className="flex items-center gap-4 text-sm font-medium text-gray-300">
+            <a
+              href="https://paoloronco.it"
+              target="_blank"
+              rel="noreferrer"
+              className="hover:text-white transition-colors duration-200"
+            >
+              Main Website
+            </a>
+            <span className="text-gray-600">•</span>
+            <a
+              href="https://github.com/paoloronco/skills-website"
+              target="_blank"
+              rel="noreferrer"
+              className="hover:text-white transition-colors duration-200"
+            >
+              GitHub
+            </a>
+          </nav>
+
           <div className="flex items-center space-x-2">
             <Code2 className="w-8 h-8 text-cyan-400" />
-            <span className="text-xl font-semibold">Paolo Ronco TechSkills</span>
+            <span className="text-xl font-semibold">Paolo Ronco - TechSkills</span>
           </div>
         </div>
       </div>
