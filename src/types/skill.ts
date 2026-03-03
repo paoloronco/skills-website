@@ -3,10 +3,12 @@ export interface Skill {
   description: string;
   level: number; // 0 to 100
   yearsExperience?: number;
+  subSkills?: string[];
   translations?: {
     [lang: string]: {
       name?: string;
       description?: string;
+      subSkills?: string[];
     };
   };
 }

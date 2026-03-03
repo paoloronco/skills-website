@@ -125,14 +125,10 @@ const baseSkills: SkillCategory = {
       level: 80
     },
     {
-      name: "Splunk (SIEM)",
-      description: "Dashboards, detections, and data onboarding inside Splunk Enterprise Security",
-      level: 70
-    },
-    {
-      name: "Wazuh (SIEM/XDR)",
-      description: "Security analytics, file integrity, and incident response using Wazuh",
-      level: 75
+      name: "SIEM Platforms (Splunk & Wazuh)",
+      description: "Design, onboarding and detection engineering on Splunk Enterprise Security and Wazuh SIEM/XDR.",
+      level: 78,
+      subSkills: ["Splunk (SIEM)", "Wazuh (SIEM/XDR)"]
     },
     {
       name: "SOAR",
@@ -548,7 +544,14 @@ const baseSkills: SkillCategory = {
   ]
 };
 
-const skillTranslationsIt: Record<string, string> = {
+interface SkillTranslation {
+  description: string;
+  subSkills?: string[];
+}
+
+type SkillTranslationEntry = SkillTranslation | string;
+
+const skillTranslationsIt: Record<string, SkillTranslationEntry> = {
   "Google Cloud Platform (GCP)": "Servizi e infrastrutture cloud di Google per calcolo, storage e AI gestite end-to-end.",
   "Amazon Web Services (AWS)": "Piattaforma AWS che copre compute, rete, storage e best practice Well-Architected.",
   "Microsoft Azure": "Servizi cloud Microsoft Azure per ambienti ibridi e modernizzazione applicativa.",
@@ -572,9 +575,13 @@ const skillTranslationsIt: Record<string, string> = {
   "CSPM": "Cloud Security Posture Management per visibilità e remediation delle configurazioni.",
   "CNAPP": "Piattaforme Cloud Native Application Protection per proteggere pipeline e runtime.",
   "Wiz (CNAPP)": "Distribuzione di Wiz per copertura agentless, compliance e gestione dei rischi cloud.",
-  "SIEM Solutions": "Implementazione di piattaforme SIEM per raccogliere e correlare eventi di sicurezza.",
-  "Splunk (SIEM)": "Dashboard, rilevazioni e onboarding dati in Splunk Enterprise Security.",
-  "Wazuh (SIEM/XDR)": "Monitoraggio sicurezza, FIM e incident response tramite Wazuh.",
+  "SIEM Solutions": {
+    description: "Implementazione di piattaforme SIEM per raccogliere e correlare eventi di sicurezza."
+  },
+  "SIEM Platforms (Splunk & Wazuh)": {
+    description: "Ingegneria e gestione di Splunk Enterprise Security e Wazuh per onboarding dati, correlazioni e incident response.",
+    subSkills: ["Splunk (SIEM)", "Wazuh (SIEM/XDR)"]
+  },
   "SOAR": "Orchestrazione e automazione della risposta agli incidenti di sicurezza.",
   "EDR/XDR": "Difesa endpoint e detection avanzata tramite soluzioni EDR/XDR.",
   "Threat & Vulnerability Management": "Triage, prioritizzazione e remediation di vulnerabilità e minacce.",
@@ -653,18 +660,24 @@ const skillTranslationsIt: Record<string, string> = {
   "Time Management": "Gestione del tempo e delle priorità.",
   "Teamwork": "Collaborazione efficace in team multidisciplinari.",
   "Accounting": "Competenze base di contabilità e processi finanziari.",
-  "Law": "Conoscenze di base legali inerenti al settore IT."
+  "Law": {
+    description: "Conoscenze di base legali inerenti al settore IT."
+  }
 };
 
 Object.values(baseSkills).forEach(skillList => {
   skillList.forEach(skill => {
-    const translation = skillTranslationsIt[skill.name];
-    if (translation) {
+    const translationEntry = skillTranslationsIt[skill.name];
+    if (translationEntry) {
+      const translation = typeof translationEntry === 'string'
+        ? { description: translationEntry }
+        : translationEntry;
       skill.translations = {
         ...(skill.translations ?? {}),
         it: {
           ...(skill.translations?.it ?? {}),
-          description: translation
+          description: translation.description,
+          ...(translation.subSkills ? { subSkills: translation.subSkills } : {})
         }
       };
     }

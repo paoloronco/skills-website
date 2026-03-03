@@ -71,7 +71,9 @@ const SkillCard: React.FC<SkillCardProps> = ({ skill, index, highlight }) => {
     );
   };
 
-  const descriptionText = skill.translations?.[language]?.description ?? skill.description;
+  const localized = skill.translations?.[language];
+  const descriptionText = localized?.description ?? skill.description;
+  const subSkills = localized?.subSkills ?? skill.subSkills;
 
   const cardStyle = {
     transformStyle: 'preserve-3d' as const,
@@ -117,6 +119,18 @@ const SkillCard: React.FC<SkillCardProps> = ({ skill, index, highlight }) => {
         <p className="text-sm text-[var(--text-secondary)] mb-4">
           {highlightText(descriptionText)}
         </p>
+        {subSkills && subSkills.length > 0 && (
+          <div className="flex flex-wrap gap-2 mb-4">
+            {subSkills.map(sub => (
+              <span
+                key={`${skill.name}-sub-${sub}`}
+                className="text-xs font-semibold px-2 py-1 rounded-full border border-[var(--divider)] text-[var(--text-secondary)] bg-[var(--pill-bg)]"
+              >
+                {sub}
+              </span>
+            ))}
+          </div>
+        )}
 
         <div className="mt-auto">
           <div
