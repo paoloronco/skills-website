@@ -11,6 +11,7 @@ const baseSkills: SkillCategory = {
     {
       name: "Amazon Web Services",
       description: "Amazon Web Services infrastructure, services, and best practices",
+      handsOn: true,
       level: 75
     },
     {
@@ -21,6 +22,7 @@ const baseSkills: SkillCategory = {
     {
       name: "Oracle Cloud Infrastructure",
       description: "Compute, networking, storage, and database services on Oracle Cloud",
+      handsOn: true,
       level: 85
     },
     {
@@ -71,7 +73,8 @@ const baseSkills: SkillCategory = {
     {
       name: "Proxmox Virtual Environment",
       description: "Proxmox virtualization platform",
-      level: 95
+      handsOn: true,
+      level: 99
     },
     {
       name: "VMware ESXi",
@@ -98,18 +101,22 @@ const baseSkills: SkillCategory = {
     {
       name: "Zero Trust Security",
       description: "Identity, network, and data controls aligned to Zero Trust principles",
+      handsOn: true,
+      handsOn: true,
       level: 86,
       subSkills: ["Cloudflare Zero Trust", "Cloudflare Tunnels & Access"]
     },
     {
       name: "Identity & Access Management (IAM)",
       description: "IAM solutions across cloud platforms",
+      handsOn: true,
       level: 80,
       subSkills: ["AWS IAM", "Azure AD", "Google Cloud IAM", "Domain Controller (AD DS)","SSO", "FreeIPA"]
     },
     {
       name: "CSPM",
       description: "Cloud Security Posture Management",
+      handsOn: true,
       level: 90,
       subSkills: ["Wiz", "SentinelOne"]
     },
@@ -209,8 +216,9 @@ const baseSkills: SkillCategory = {
     {
       name: "Firewall",
       description: "Policy management, NAT and UTM/NGFW",
+      handsOn: true,
       level: 90,
-      subSkills: ["PfSense", "Ubiquiti Networks"]
+      subSkills: ["PfSense", "Ubiquiti Networks","Cloudflare Firewall", "Cloudflare WAF", "FortiGate Firewall"]
     },
     {
       name: "Virtual Private Cloud",
@@ -221,11 +229,7 @@ const baseSkills: SkillCategory = {
       name: "Zero Trust Networking",
       description: "Identity-aware network segmentation leveraging Cloudflare One services",
       level: 85,
-      subSkills: [
-        "Cloudflare Zero Trust",
-        "Cloudflare Tunnels & Access",
-        "Cloudflare Workers & Pages"
-      ]
+      subSkills: ["Cloudflare Zero Trust", "Cloudflare Tunnels & Access", "Cloudflare Workers & Pages"]
     },
     {
       name: "VPN Solutions",
@@ -254,31 +258,24 @@ const baseSkills: SkillCategory = {
       level: 85,
       subSkills: ["Cloudflare DNS", "Registrar"]
     },
-    {
-      name: "PfSense",
-      description: "PfSense firewall and routing solutions",
-      level: 85
-    },
-    {
-      name: "Ubiquiti Networks",
-      description: "Design and management of UniFi switching, routing, and wireless infrastructure",
-      level: 90
-    }
   ],
   "DevOps & Platform Engineering": [
     {
       name: "Docker",
       description: "Container technology for application packaging",
+      handsOn: true,
       level: 95
     },
     {
       name: "Git",
       description: "Version control with Git",
+      handsOn: true,
       level: 90
     },
     {
       name: "GitHub",
       description: "Collaboration, workflow automation, and CI/CD with GitHub",
+      handsOn: true,
       level: 90
     },
     {
@@ -289,16 +286,19 @@ const baseSkills: SkillCategory = {
     {
       name: "CI/CD Pipelines",
       description: "Continuous integration and deployment automation",
+      handsOn: true,
       level: 70
     },
     {
       name: "Monitoring & Logging",
       description: "Prometheus and Grafana implementation",
+      handsOn: true,
       level: 65
     },
     {
       name: "Vercel",
       description: "Vercel deployment and automation",
+      handsOn: true,
       level: 70
     }
   ],
@@ -321,12 +321,14 @@ const baseSkills: SkillCategory = {
     {
       name: "Low-Code Automation",
       description: "Designing composable automations on Make.com and n8n with API integrations and human-in-the-loop steps.",
+      handsOn: true,
       level: 90,
       subSkills: ["Make.com", "n8n"]
     },
     {
       name: "Home Assistant",
       description: "Home automation platform for IoT and smart devices",
+      handsOn: true,
       level: 90
     }
   ],
@@ -334,12 +336,14 @@ const baseSkills: SkillCategory = {
     {
       name: "Log Analysis",
       description: "Extracting insights from system and application logs",
+      handsOn: true,
       level: 85,
       subSkills: ["Google Cloud Logging", "SigNoz", "Graylog"]
     },
     {
       name: "Monitoring Systems",
       description: "Setting up comprehensive monitoring solutions",
+      handsOn: true,
       level: 90
     },
     {
@@ -355,6 +359,7 @@ const baseSkills: SkillCategory = {
     {
       name: "Observability Tooling",
       description: "Hands-on administration of Zabbix, Elastic Stack, Netdata, and Glances for metrics, logs, and real-time alerting.",
+      handsOn: true,
       level: 75,
       subSkills: ["Zabbix", "Elastic Stack", "Netdata", "Glances"]
     }
@@ -363,12 +368,14 @@ const baseSkills: SkillCategory = {
     {
       name: "Vector Databases",
       description: "Designing schemas and search flows on Pinecone, Weaviate, and similar vector stores",
+      handsOn: true,
       level: 80,
       subSkills: ["Qdrant", "MongoDB Atlas Vector Store"]
     },
     {
       name: "Retrieval-Augmented Generation",
       description: "Knowledge-grounded pipelines for AI assistants",
+      handsOn: true,
       level: 85
     },
     {
@@ -379,6 +386,7 @@ const baseSkills: SkillCategory = {
     {
       name: "Chatbot Development",
       description: "Design and delivery of conversational AI across channels",
+      handsOn: true,
       level: 80
     },
     {
@@ -389,6 +397,7 @@ const baseSkills: SkillCategory = {
     {
       name: "Hugging Face Ecosystem",
       description: "Using Hugging Face models, datasets, Inference Endpoints, and Spaces",
+      handsOn: true,
       level: 80
     }
   ],
@@ -396,12 +405,14 @@ const baseSkills: SkillCategory = {
     {
       name: "Containers",
       description: "Container technologies beyond Docker",
+      handsOn: true,
       level: 95,
       subSkills: ["Proxmox LXC", "Cloudflare Containers", "Docker", "Amazon ECS", "Portainer"]
     },
     {
       name: "Linux",
       description: "Linux OS administration (Ubuntu, Debian, Rhel, Proxmox)",
+      handsOn: true,
       level: 95,
       subSkills: ["Ubuntu", "Debian", "Red Hat Enterprise Linux"]
     },
@@ -483,11 +494,13 @@ const baseSkills: SkillCategory = {
     {
       name: "WordPress",
       description: "Development and customization of WordPress websites and plugins",
+      handsOn: true,
       level: 90
     },
     {
       name: "Chrome Extensions Development",
       description: "Design and development of custom Chrome browser extensions",
+      handsOn: true,
       level: 80
     },
     {
