@@ -3,6 +3,8 @@ import SkillCard from './SkillCard';
 import { Skill } from '../types/skill';
 import { getCategoryIcon } from '../utils/categoryIcons';
 import { ChevronDown } from 'lucide-react';
+import { useLanguage } from '../contexts/LanguageContext';
+import { categoryLabels } from '../locales/translations';
 
 interface SkillCategoryProps {
   category: string;
@@ -17,14 +19,22 @@ const SkillCategory: React.FC<SkillCategoryProps> = ({ category, skills, searchT
   const [isDesktop, setIsDesktop] = useState(false);
   const contentRef = useRef<HTMLDivElement>(null);
   const [contentHeight, setContentHeight] = useState<number | null>(null);
+  const { language } = useLanguage();
 
-  const filteredSkills = searchTerm
-    ? skills.filter(
-        skill =>
-          skill.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-          skill.description.toLowerCase().includes(searchTerm.toLowerCase())
-      )
+  const normalizedSearch = searchTerm.trim().toLowerCase();
+  const filteredSkills = normalizedSearch
+    ? skills.filter(skill => {
+        const candidates = [
+          skill.name,
+          skill.description,
+          skill.translations?.[language]?.name,
+          skill.translations?.[language]?.description
+        ];
+        return candidates.some(text => text?.toLowerCase().includes(normalizedSearch));
+      })
     : skills;
+
+  const localizedCategory = categoryLabels[language]?.[category] ?? category;
 
   useEffect(() => {
     const updateLayout = () => {
@@ -77,7 +87,7 @@ const SkillCategory: React.FC<SkillCategoryProps> = ({ category, skills, searchT
           >
             <CategoryIcon className="w-8 h-8 text-cyan-400" />
           </div>
-          <h2 className="text-3xl font-bold text-[var(--text-primary)]">{category}</h2>
+          <h2 className="text-3xl font-bold text-[var(--text-primary)]">{localizedCategory}</h2>
         </div>
         <ChevronDown
           className={`w-5 h-5 text-[var(--text-secondary)] transition-transform duration-300 md:hidden ${

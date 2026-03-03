@@ -1,4 +1,4 @@
-import { Language } from '../contexts/LanguageContext';
+ï»¿import { Language } from '../contexts/LanguageContext';
 
 export const languageLabels: Record<Language, string> = {
   en: 'EN',
@@ -9,13 +9,14 @@ export const uiTranslations = {
   en: {
     heroTitle: 'Paolo Ronco - TechSkills',
     heroSubtitle: 'Cybersecurity analyst specialized in cloud defense, resilient networking, automation, AI operations, and digital platforms.',
-    searchPlaceholder: 'Search skills…',
+    searchPlaceholder: 'Search skillsâ€¦',
     header: {
       mainWebsite: 'Main Website',
       github: 'GitHub'
     },
     accessibility: {
-      languageToggle: 'Switch language'
+      languageToggle: 'Switch language',
+      themeToggle: 'Toggle dark mode'
     },
     labels: {
       proficiency: 'Proficiency'
@@ -24,13 +25,14 @@ export const uiTranslations = {
   it: {
     heroTitle: 'Paolo Ronco - TechSkills',
     heroSubtitle: 'Analista di cybersecurity specializzato in difesa cloud, networking resiliente, automazione, AI operations e piattaforme digitali.',
-    searchPlaceholder: 'Cerca competenze…',
+    searchPlaceholder: 'Cerca competenzeâ€¦',
     header: {
       mainWebsite: 'Sito principale',
       github: 'GitHub'
     },
     accessibility: {
-      languageToggle: 'Cambia lingua'
+      languageToggle: 'Cambia lingua',
+      themeToggle: 'Attiva/disattiva tema scuro'
     },
     labels: {
       proficiency: 'Competenza'
@@ -57,7 +59,7 @@ export const categoryLabels: Record<Language, Record<string, string>> = {
     'Networking & Edge': 'Networking & Edge',
     'DevOps & Platform Engineering': 'DevOps & Platform Engineering',
     'Automation & Orchestration': 'Automazione & Orchestrazione',
-    'Observability & Analytics': 'Osservabilità & Analytics',
+    'Observability & Analytics': 'OsservabilitÃ  & Analytics',
     'AI & Machine Intelligence': 'AI & Machine Intelligence',
     'Infrastructure & Operations': 'Infrastruttura & Operations',
     'Software Development & Digital Platforms': 'Sviluppo Software & Digital Platforms',

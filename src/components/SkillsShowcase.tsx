@@ -2,6 +2,8 @@ import React from 'react';
 import { Search } from 'lucide-react';
 import { skillsByCategory } from '../data/skills';
 import SkillCategory from './SkillCategory';
+import { useLanguage } from '../contexts/LanguageContext';
+import { categoryLabels, uiTranslations } from '../locales/translations';
 
 interface SkillsShowcaseProps {
   searchTerm: string;
@@ -10,6 +12,8 @@ interface SkillsShowcaseProps {
 }
 
 const SkillsShowcase: React.FC<SkillsShowcaseProps> = ({ searchTerm, setSearchTerm, visibleCategories }) => {
+  const { language } = useLanguage();
+  const copy = uiTranslations[language];
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(e.target.value);
   };
@@ -28,10 +32,10 @@ const SkillsShowcase: React.FC<SkillsShowcaseProps> = ({ searchTerm, setSearchTe
           className="text-4xl md:text-6xl font-bold mb-8 inline-block text-transparent bg-clip-text animate-gradient-xy"
           style={{ backgroundImage: 'var(--hero-gradient)' }}
         >
-          Paolo Ronco - TechSkills
+          {copy.heroTitle}
         </h1>
         <p className="text-[var(--text-secondary)] md:text-lg mb-12 max-w-3xl">
-          Cybersecurity analyst specialized in cloud defense, resilient networking, automation, AI operations, and digital platforms.
+          {copy.heroSubtitle}
         </p>
         
         <div className="relative w-full max-w-md mb-8">
@@ -40,7 +44,7 @@ const SkillsShowcase: React.FC<SkillsShowcaseProps> = ({ searchTerm, setSearchTe
           </div>
           <input
             type="text"
-            placeholder="Search skills..."
+            placeholder={copy.searchPlaceholder}
             className="block w-full rounded-lg py-3 pl-10 pr-3 text-[var(--text-primary)] placeholder-[var(--text-secondary)] focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all duration-300"
             style={{
               backgroundColor: 'var(--input-bg)',
@@ -64,8 +68,8 @@ const SkillsShowcase: React.FC<SkillsShowcaseProps> = ({ searchTerm, setSearchTe
                 color: 'var(--pill-text)',
                 boxShadow: 'var(--pill-shadow)'
               }}
-            >
-              {category}
+              >
+              {categoryLabels[language]?.[category] ?? category}
             </button>
           ))}
         </div>

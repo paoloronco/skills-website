@@ -8,6 +8,8 @@ const menuLinks = [
   { key: 'github' as const, href: 'https://github.com/paoloronco/skills-website' }
 ];
 
+const languageOrder: Array<keyof typeof languageLabels> = ['en', 'it'];
+
 interface HeaderProps {
   theme: 'light' | 'dark';
   toggleTheme: () => void;
@@ -41,7 +43,7 @@ const Header: React.FC<HeaderProps> = ({ theme, toggleTheme }) => {
         className="sr-only"
         checked={theme === 'dark'}
         onChange={toggleTheme}
-        aria-label="Toggle dark mode"
+        aria-label={copy.accessibility.themeToggle}
       />
       <div className="w-14 h-7 bg-[var(--toggle-track)] rounded-full transition-colors duration-300 relative">
         <span
@@ -70,7 +72,7 @@ const Header: React.FC<HeaderProps> = ({ theme, toggleTheme }) => {
       role="group"
       aria-label={copy.accessibility.languageToggle}
     >
-      {(Object.keys(languageLabels) as Array<keyof typeof languageLabels>).map(code => (
+      {languageOrder.map(code => (
         <button
           key={`language-${code}-${variant}`}
           type="button"
