@@ -107,7 +107,8 @@ const baseSkills: SkillCategory = {
     {
       name: "CSPM",
       description: "Cloud Security Posture Management",
-      level: 90
+      level: 90,
+      subSkills: ["Wiz", "SentinelOne"]
     },
     {
       name: "CNAPP Platforms (Strategy & Wiz)",
@@ -134,7 +135,8 @@ const baseSkills: SkillCategory = {
     {
       name: "EDR/XDR",
       description: "Endpoint/Extended Detection and Response",
-      level: 70
+      level: 70,
+      subSkills: ["CrowdStrike Falcon"]
     },
     {
       name: "Threat & Vulnerability Management",
@@ -201,12 +203,14 @@ const baseSkills: SkillCategory = {
     {
       name: "Routing & Switching",
       description: "Static/dynamic routing, VLAN and STP",
-      level: 80
+      level: 80,
+      subSkills: ["PfSense", "Ubiquiti Networks"]
     },
     {
       name: "Firewall",
       description: "Policy management, NAT and UTM/NGFW",
-      level: 90
+      level: 90,
+      subSkills: ["PfSense", "Ubiquiti Networks"]
     },
     {
       name: "Virtual Private Cloud",
@@ -215,8 +219,13 @@ const baseSkills: SkillCategory = {
     },
     {
       name: "Zero Trust Networking",
-      description: "Implementation of zero trust security models",
-      level: 85
+      description: "Identity-aware network segmentation leveraging Cloudflare One services",
+      level: 85,
+      subSkills: [
+        "Cloudflare Zero Trust",
+        "Cloudflare Tunnels & Access",
+        "Cloudflare Workers & Pages"
+      ]
     },
     {
       name: "VPN Solutions",
@@ -236,17 +245,14 @@ const baseSkills: SkillCategory = {
     {
       name: "CDN Implementation",
       description: "Content delivery network configuration and optimization",
-      level: 80
+      level: 80,
+      subSkills: ["Cloudflare CDN", "Cache Rules", "Workers Sites"]
     },
     {
       name: "DNS Management",
       description: "Domain name system architecture and management",
-      level: 85
-    },
-    {
-      name: "Cloudflare Platform",
-      description: "Cloudflare CDN, DNS, Zero Trust tunnels/applications plus Workers, Pages, and AI/compute capabilities",
-      level: 90
+      level: 85,
+      subSkills: ["Cloudflare DNS", "Registrar"]
     },
     {
       name: "PfSense",
@@ -328,7 +334,8 @@ const baseSkills: SkillCategory = {
     {
       name: "Log Analysis",
       description: "Extracting insights from system and application logs",
-      level: 85
+      level: 85,
+      subSkills: ["Google Cloud Logging", "SigNoz", "Graylog"]
     },
     {
       name: "Monitoring Systems",
@@ -356,12 +363,8 @@ const baseSkills: SkillCategory = {
     {
       name: "Vector Databases",
       description: "Designing schemas and search flows on Pinecone, Weaviate, and similar vector stores",
-      level: 80
-    },
-    {
-      name: "Embeddings Engineering",
-      description: "Generating, evaluating, and storing embeddings for semantic tasks",
-      level: 80
+      level: 80,
+      subSkills: ["Qdrant", "MongoDB Atlas Vector Store"]
     },
     {
       name: "Retrieval-Augmented Generation (RAG)",
@@ -393,17 +396,32 @@ const baseSkills: SkillCategory = {
     {
       name: "Containers",
       description: "Container technologies beyond Docker",
-      level: 95
+      level: 95,
+      subSkills: ["Proxmox LXC", "Cloudflare Containers", "Docker", "Amazon ECS", "Portainer"]
     },
     {
       name: "Linux",
       description: "Linux OS administration (Ubuntu, Debian, Rhel, Proxmox)",
-      level: 95
+      level: 95,
+      subSkills: ["Ubuntu", "Debian", "Red Hat Enterprise Linux"]
     },
     {
       name: "Windows Server Administration",
       description: "AD DS, Group Policy, file/print services, roles and features",
-      level: 80
+      level: 80,
+      subSkills: [
+        "GUI Shell & PowerShell",
+        "Active Directory (AD)",
+        "Remote Desktop Services (RDS)",
+        "RAID",
+        "Storage Volumes",
+        "SMB Services",
+        "Print Server",
+        "VPN Replication",
+        "NTFS",
+        "Hyper-V",
+        "Disaster Recovery & Business Continuity (DR/BC)"
+      ]
     },
     {
       name: "Data Migration",
@@ -550,7 +568,10 @@ const skillTranslationsIt: Record<string, SkillTranslationEntry> = {
   "Cloud Security": "Implementazione di controlli di sicurezza specifici per ambienti cloud.",
   "Zero Trust Security": "Applicazione dei principi Zero Trust a identità, rete e dati.",
   "Identity & Access Management": "Gestione di accessi, SSO e provisioning su piattaforme IAM multipiattaforma.",
-  "CSPM": "Cloud Security Posture Management per visibilità e remediation delle configurazioni.",
+  "CSPM": {
+    description: "Cloud Security Posture Management per visibilità e remediation delle configurazioni.",
+    subSkills: ["Wiz", "SentinelOne"]
+  },
   "CNAPP Platforms (Strategy & Wiz)": {
     description: "Strategia CNAPP end-to-end con implementazione di Wiz per copertura agentless, compliance e protezione del runtime.",
     subSkills: ["CNAPP Strategy", "Wiz (CNAPP)"]
@@ -563,7 +584,10 @@ const skillTranslationsIt: Record<string, SkillTranslationEntry> = {
     subSkills: ["Splunk (SIEM)", "Wazuh (SIEM/XDR)"]
   },
   "SOAR": "Orchestrazione e automazione della risposta agli incidenti di sicurezza.",
-  "EDR/XDR": "Difesa endpoint e detection avanzata tramite soluzioni EDR/XDR.",
+  "EDR/XDR": {
+    description: "Difesa endpoint e detection avanzata tramite soluzioni EDR/XDR.",
+    subSkills: ["CrowdStrike Falcon"]
+  },
   "Threat & Vulnerability Management": "Triage, prioritizzazione e remediation di vulnerabilità e minacce.",
   "Vulnerability Assessment": "Assessment continui per individuare e analizzare vulnerabilità.",
   "Penetration Testing": "Test di intrusione controllati per valutare la postura di sicurezza.",
@@ -576,16 +600,34 @@ const skillTranslationsIt: Record<string, SkillTranslationEntry> = {
   "Cryptography": "Applicazione di concetti e pratiche di crittografia applicata.",
   "Network Protocols": "Gestione di protocolli HTTP/S, TCP/IP, UDP e stack di rete correlati.",
   "TCP/IP Fundamentals": "Fondamenti OSI/TCP-IP, subnetting e tecniche di diagnostica.",
-  "Routing & Switching": "Configurazione di routing statico/dinamico, VLAN e spanning tree.",
-  "Firewall": "Gestione di policy, NAT, UTM e firewall di nuova generazione.",
+  "Routing & Switching": {
+    description: "Configurazione di routing statico/dinamico, VLAN e spanning tree.",
+    subSkills: ["PfSense", "Ubiquiti Networks"]
+  },
+  "Firewall": {
+    description: "Gestione di policy, NAT, UTM e firewall di nuova generazione.",
+    subSkills: ["PfSense", "Ubiquiti Networks"]
+  },
   "Virtual Private Cloud": "Design e implementazione di VPC multi-cloud.",
-  "Zero Trust Networking": "Adozione di modelli di sicurezza Zero Trust per la rete.",
+  "Zero Trust Networking": {
+    description: "Adozione di modelli Zero Trust con Cloudflare One, tunnel applicativi e servizi edge.",
+    subSkills: [
+      "Cloudflare Zero Trust",
+      "Cloudflare Tunnels & Access",
+      "Cloudflare Workers & Pages"
+    ]
+  },
   "VPN Solutions": "Implementazione di VPN site-to-site e client per accessi sicuri.",
   "Load Balancing": "Distribuzione del traffico e soluzioni di alta disponibilità.",
   "API Gateway": "Gestione e sicurezza delle API tramite gateway dedicati.",
-  "CDN Implementation": "Configurazione e ottimizzazione delle CDN per contenuti globali.",
-  "DNS Management": "Gestione di architetture DNS e record mission-critical.",
-  "Cloudflare Platform": "Uso di Cloudflare per CDN, DNS, Zero Trust, Workers, Pages e servizi AI.",
+  "CDN Implementation": {
+    description: "Configurazione e ottimizzazione delle CDN per contenuti globali.",
+    subSkills: ["Cloudflare CDN", "Cache Rules", "Workers Sites"]
+  },
+  "DNS Management": {
+    description: "Gestione di architetture DNS e record mission-critical.",
+    subSkills: ["Cloudflare DNS", "Registrar"]
+  },
   "PfSense": "Firewalling e routing professionale con pfSense.",
   "Ubiquiti Networks": "Progettazione e gestione di reti UniFi cablate e wireless.",
   "Docker": "Containerizzazione di applicazioni con Docker e best practice sulle immagini.",
@@ -603,7 +645,10 @@ const skillTranslationsIt: Record<string, SkillTranslationEntry> = {
     subSkills: ["Make.com", "n8n"]
   },
   "Home Assistant": "Automazione domestica e IoT con Home Assistant.",
-  "Log Analysis": "Analisi di log applicativi e di sistema per insight operativi.",
+  "Log Analysis": {
+    description: "Analisi di log applicativi e di sistema per insight operativi.",
+    subSkills: ["Google Cloud Logging", "SigNoz", "Graylog"]
+  },
   "Monitoring Systems": "Implementazione di soluzioni di monitoraggio end-to-end.",
   "Performance Analysis": "Valutazione e ottimizzazione delle prestazioni di sistemi e app.",
   "Security Analytics": "Analisi dei dati per individuare pattern e segnali di minaccia.",
@@ -611,16 +656,39 @@ const skillTranslationsIt: Record<string, SkillTranslationEntry> = {
     description: "Gestione di Zabbix, Elastic Stack, Netdata e Glances per metriche, log e alerting real-time.",
     subSkills: ["Zabbix", "Elastic Stack", "Netdata", "Glances"]
   },
-  "Vector Databases": "Progettazione di schemi e ricerche su Pinecone, Weaviate e database vettoriali affini.",
-  "Embeddings Engineering": "Generazione, valutazione e storage di embeddings per compiti semantici.",
+  "Vector Databases": {
+    description: "Progettazione di schemi e ricerche su Pinecone, Weaviate e database vettoriali affini.",
+    subSkills: ["Qdrant", "MongoDB Atlas Vector Store"]
+  },
   "Retrieval-Augmented Generation (RAG)": "Pipeline RAG per assistenti AI contestualizzati.",
   "MCP (Model Context Protocol)": "Implementazione di server/client MCP e provider di strumenti.",
   "Chatbot Development": "Design e delivery di chatbot multicanale.",
   "AI Agent Orchestration": "Costruzione di agenti autonomi con strumenti, memoria e guardrail.",
   "Hugging Face Ecosystem": "Uso di modelli, dataset, Inference Endpoints e Spaces di Hugging Face.",
-  "Containers": "Tecnologie container oltre Docker per ambienti enterprise.",
-  "Linux": "Amministrazione Linux (Ubuntu, Debian, RHEL, Proxmox).",
-  "Windows Server Administration": "Gestione di AD DS, Group Policy e ruoli server Windows.",
+  "Containers": {
+    description: "Tecnologie container oltre Docker per ambienti enterprise.",
+    subSkills: ["Proxmox LXC", "Cloudflare Containers", "Docker", "Amazon ECS", "Portainer"]
+  },
+  "Linux": {
+    description: "Amministrazione Linux (Ubuntu, Debian, RHEL, Proxmox).",
+    subSkills: ["Ubuntu", "Debian", "Red Hat Enterprise Linux"]
+  },
+  "Windows Server Administration": {
+    description: "Gestione di AD DS, Group Policy e ruoli server Windows.",
+    subSkills: [
+      "GUI Shell & PowerShell",
+      "Active Directory (AD)",
+      "Remote Desktop Services (RDS)",
+      "RAID",
+      "Storage Volumes",
+      "SMB Services",
+      "Print Server",
+      "VPN Replication",
+      "NTFS",
+      "Hyper-V",
+      "Disaster Recovery & Business Continuity (DR/BC)"
+    ]
+  },
   "Data Migration": "Migrazione di workload e dati dall'on-premise al cloud.",
   "Infrastructure Monitoring": "Strumenti e tecniche per l'osservabilità dell'infrastruttura.",
   "Business Continuity": "Business Impact Analysis e piani BCP con relativi test.",
