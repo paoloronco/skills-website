@@ -98,11 +98,13 @@ const baseSkills: SkillCategory = {
       name: "Zero Trust Security",
       description: "Identity, network, and data controls aligned to Zero Trust principles",
       level: 86
+      subSkills: ["Cloudflare Zero Trust", "Cloudflare Tunnels & Access"]
     },
     {
-      name: "Identity & Access Management",
+      name: "Identity & Access Management (IAM)",
       description: "IAM solutions across cloud platforms",
-      level: 80
+      level: 80,
+      subSkills: ["AWS IAM", "Azure AD", "Google Cloud IAM", "Domain Controller (AD DS)","SSO", "FreeIPA"]
     },
     {
       name: "CSPM",
@@ -117,14 +119,9 @@ const baseSkills: SkillCategory = {
       subSkills: ["CNAPP Strategy", "Wiz (CNAPP)"]
     },
     {
-      name: "SIEM Solutions",
-      description: "Security Information and Event Management solutions",
-      level: 80
-    },
-    {
       name: "SIEM Platforms",
       description: "Design, onboarding and detection engineering on Splunk Enterprise Security and Wazuh SIEM/XDR.",
-      level: 78,
+      level: 70,
       subSkills: ["Splunk (SIEM)", "Wazuh (SIEM/XDR)"]
     },
     {
