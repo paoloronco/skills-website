@@ -110,14 +110,10 @@ const baseSkills: SkillCategory = {
       level: 90
     },
     {
-      name: "CNAPP",
-      description: "Cloud Native Application Protection Platform",
-      level: 90
-    },
-    {
-      name: "Wiz (CNAPP)",
-      description: "Implementing Wiz for agentless CNAPP coverage and compliance visibility",
-      level: 85
+      name: "CNAPP Platforms (Strategy & Wiz)",
+      description: "Combining CNAPP blueprints with Wiz to secure build pipelines, cloud runtime, and compliance.",
+      level: 90,
+      subSkills: ["CNAPP Strategy", "Wiz (CNAPP)"]
     },
     {
       name: "SIEM Solutions",
@@ -317,14 +313,10 @@ const baseSkills: SkillCategory = {
       level: 90
     },
     {
-      name: "Make.com Automation",
-      description: "Workflows and automations using Make.com",
-      level: 90
-    },
-    {
-      name: "n8n",
-      description: "Low-code automations and integrations built with n8n",
-      level: 90
+      name: "Low-Code Automation (Make.com & n8n)",
+      description: "Designing composable automations on Make.com and n8n with API integrations and human-in-the-loop steps.",
+      level: 90,
+      subSkills: ["Make.com", "n8n"]
     },
     {
       name: "Home Assistant",
@@ -354,24 +346,10 @@ const baseSkills: SkillCategory = {
       level: 90
     },
     {
-      name: "Zabbix",
-      description: "Enterprise monitoring for networks and servers",
-      level: 75
-    },
-    {
-      name: "Elastic Stack",
-      description: "Indexing, search, dashboards, and alerting with Elasticsearch, Logstash, and Kibana",
-      level: 60
-    },
-    {
-      name: "NetData",
-      description: "Real-time performance monitoring",
-      level: 70
-    },
-    {
-      name: "Glances",
-      description: "Cross-platform monitoring tool for system performance",
-      level: 65
+      name: "Observability Tooling (Zabbix, Elastic, Netdata, Glances)",
+      description: "Hands-on administration of Zabbix, Elastic Stack, Netdata, and Glances for metrics, logs, and real-time alerting.",
+      level: 75,
+      subSkills: ["Zabbix", "Elastic Stack", "Netdata", "Glances"]
     }
   ],
   "AI & Machine Intelligence": [
@@ -573,8 +551,10 @@ const skillTranslationsIt: Record<string, SkillTranslationEntry> = {
   "Zero Trust Security": "Applicazione dei principi Zero Trust a identità, rete e dati.",
   "Identity & Access Management": "Gestione di accessi, SSO e provisioning su piattaforme IAM multipiattaforma.",
   "CSPM": "Cloud Security Posture Management per visibilità e remediation delle configurazioni.",
-  "CNAPP": "Piattaforme Cloud Native Application Protection per proteggere pipeline e runtime.",
-  "Wiz (CNAPP)": "Distribuzione di Wiz per copertura agentless, compliance e gestione dei rischi cloud.",
+  "CNAPP Platforms (Strategy & Wiz)": {
+    description: "Strategia CNAPP end-to-end con implementazione di Wiz per copertura agentless, compliance e protezione del runtime.",
+    subSkills: ["CNAPP Strategy", "Wiz (CNAPP)"]
+  },
   "SIEM Solutions": {
     description: "Implementazione di piattaforme SIEM per raccogliere e correlare eventi di sicurezza."
   },
@@ -618,17 +598,19 @@ const skillTranslationsIt: Record<string, SkillTranslationEntry> = {
   "Event-Driven Automation": "Automazioni guidate da eventi e trigger in tempo reale.",
   "Process Automation": "Orchestrazione di workflow e processi digitali.",
   "Serverless Workflows": "Progettazione di workflow serverless orchestrati.",
-  "Make.com Automation": "Automazioni e integrazioni costruite su Make.com.",
-  "n8n": "Integrazioni low-code e automazioni con n8n.",
+  "Low-Code Automation (Make.com & n8n)": {
+    description: "Automazioni low-code evolute su Make.com e n8n con orchestrazione di API e workflow human-in-the-loop.",
+    subSkills: ["Make.com", "n8n"]
+  },
   "Home Assistant": "Automazione domestica e IoT con Home Assistant.",
   "Log Analysis": "Analisi di log applicativi e di sistema per insight operativi.",
   "Monitoring Systems": "Implementazione di soluzioni di monitoraggio end-to-end.",
   "Performance Analysis": "Valutazione e ottimizzazione delle prestazioni di sistemi e app.",
   "Security Analytics": "Analisi dei dati per individuare pattern e segnali di minaccia.",
-  "Zabbix": "Monitoraggio enterprise di reti e server con Zabbix.",
-  "Elastic Stack": "Indicizzazione, ricerca e alerting con Elasticsearch, Logstash e Kibana.",
-  "NetData": "Monitoraggio real-time delle performance con Netdata.",
-  "Glances": "Monitor multi-piattaforma per metriche di sistema.",
+  "Observability Tooling (Zabbix, Elastic, Netdata, Glances)": {
+    description: "Gestione di Zabbix, Elastic Stack, Netdata e Glances per metriche, log e alerting real-time.",
+    subSkills: ["Zabbix", "Elastic Stack", "Netdata", "Glances"]
+  },
   "Vector Databases": "Progettazione di schemi e ricerche su Pinecone, Weaviate e database vettoriali affini.",
   "Embeddings Engineering": "Generazione, valutazione e storage di embeddings per compiti semantici.",
   "Retrieval-Augmented Generation (RAG)": "Pipeline RAG per assistenti AI contestualizzati.",
