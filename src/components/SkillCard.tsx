@@ -13,10 +13,19 @@ const SkillCard: React.FC<SkillCardProps> = ({ skill, index, highlight }) => {
   const [showProficiency, setShowProficiency] = useState(false);
   const [tilt, setTilt] = useState({ rotateX: 0, rotateY: 0 });
   const cardRef = useRef<HTMLDivElement>(null);
+  const progressRaf = useRef<number | null>(null);
+
+  const triggerProgress = () => {
+    setShowProficiency(false);
+    if (progressRaf.current) cancelAnimationFrame(progressRaf.current);
+    progressRaf.current = requestAnimationFrame(() => setShowProficiency(true));
+  };
 
   useEffect(() => {
-    const timer = requestAnimationFrame(() => setShowProficiency(true));
-    return () => cancelAnimationFrame(timer);
+    triggerProgress();
+    return () => {
+      if (progressRaf.current) cancelAnimationFrame(progressRaf.current);
+    };
   }, []);
 
   const handleMouseMove = (event: React.MouseEvent<HTMLDivElement>) => {
@@ -25,7 +34,7 @@ const SkillCard: React.FC<SkillCardProps> = ({ skill, index, highlight }) => {
 
     const x = (event.clientX - rect.left) / rect.width;
     const y = (event.clientY - rect.top) / rect.height;
-    const ROTATION_STRENGTH = 8;
+    const ROTATION_STRENGTH = 14;
 
     setTilt({
       rotateX: (0.5 - y) * ROTATION_STRENGTH,
@@ -52,16 +61,20 @@ const SkillCard: React.FC<SkillCardProps> = ({ skill, index, highlight }) => {
       ref={cardRef}
       initial={{ opacity: 0, y: 20, rotateX: 0, rotateY: 0 }}
       animate={{ opacity: 1, y: 0, rotateX: tilt.rotateX, rotateY: tilt.rotateY }}
-      transition={{ duration: 0.4, delay: index * 0.05 }}
+      transition={{ duration: 0.4, delay: index * 0.05, type: 'spring', stiffness: 200, damping: 20 }}
       whileHover={{ 
-        scale: 1.03, 
-        boxShadow: '0 20px 45px -20px rgba(16, 185, 129, 0.35)' 
+        scale: 1.05, 
+        boxShadow: '0 30px 60px -25px rgba(6, 182, 212, 0.45)',
+        filter: 'drop-shadow(0 15px 35px rgba(14, 165, 233, 0.35))'
       }}
-      style={{ transformStyle: 'preserve-3d', willChange: 'transform' }}
-      className={`bg-gradient-to-br from-gray-800 to-gray-850 border border-gray-700 rounded-lg overflow-hidden transition-all duration-300 ${
-        hovered ? 'shadow-lg shadow-cyan-500/10' : 'shadow-md shadow-black/20'
+      style={{ transformStyle: 'preserve-3d', willChange: 'transform', perspective: 1200 }}
+      className={`bg-gradient-to-br from-gray-800 via-gray-850 to-gray-900 border border-gray-700 rounded-xl overflow-hidden transition-all duration-300 ${
+        hovered ? 'shadow-xl shadow-cyan-500/20' : 'shadow-md shadow-black/30'
       }`}
-      onMouseEnter={() => setHovered(true)}
+      onMouseEnter={() => {
+        setHovered(true);
+        triggerProgress();
+      }}
       onMouseLeave={() => {
         setHovered(false);
         resetTilt();
