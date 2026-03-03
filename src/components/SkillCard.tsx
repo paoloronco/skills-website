@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Skill } from '../types/skill';
 import { motion } from '../utils/motionProxy';
 
@@ -11,11 +11,29 @@ interface SkillCardProps {
 const SkillCard: React.FC<SkillCardProps> = ({ skill, index, highlight }) => {
   const [hovered, setHovered] = useState(false);
   const [showProficiency, setShowProficiency] = useState(false);
+  const [tilt, setTilt] = useState({ rotateX: 0, rotateY: 0 });
+  const cardRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const timer = requestAnimationFrame(() => setShowProficiency(true));
     return () => cancelAnimationFrame(timer);
   }, []);
+
+  const handleMouseMove = (event: React.MouseEvent<HTMLDivElement>) => {
+    const rect = cardRef.current?.getBoundingClientRect();
+    if (!rect) return;
+
+    const x = (event.clientX - rect.left) / rect.width;
+    const y = (event.clientY - rect.top) / rect.height;
+    const ROTATION_STRENGTH = 8;
+
+    setTilt({
+      rotateX: (0.5 - y) * ROTATION_STRENGTH,
+      rotateY: (x - 0.5) * ROTATION_STRENGTH
+    });
+  };
+
+  const resetTilt = () => setTilt({ rotateX: 0, rotateY: 0 });
   
   // Highlight matching text if search term is present
   const highlightText = (text: string) => {
@@ -31,18 +49,24 @@ const SkillCard: React.FC<SkillCardProps> = ({ skill, index, highlight }) => {
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
+      ref={cardRef}
+      initial={{ opacity: 0, y: 20, rotateX: 0, rotateY: 0 }}
+      animate={{ opacity: 1, y: 0, rotateX: tilt.rotateX, rotateY: tilt.rotateY }}
       transition={{ duration: 0.4, delay: index * 0.05 }}
       whileHover={{ 
         scale: 1.03, 
-        boxShadow: '0 10px 30px -15px rgba(0, 0, 0, 0.5)' 
+        boxShadow: '0 20px 45px -20px rgba(16, 185, 129, 0.35)' 
       }}
+      style={{ transformStyle: 'preserve-3d', willChange: 'transform' }}
       className={`bg-gradient-to-br from-gray-800 to-gray-850 border border-gray-700 rounded-lg overflow-hidden transition-all duration-300 ${
         hovered ? 'shadow-lg shadow-cyan-500/10' : 'shadow-md shadow-black/20'
       }`}
       onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
+      onMouseLeave={() => {
+        setHovered(false);
+        resetTilt();
+      }}
+      onMouseMove={handleMouseMove}
     >
       <div className="p-5">
         <div className="flex justify-between items-start mb-3">
