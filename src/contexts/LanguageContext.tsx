@@ -14,8 +14,7 @@ const getInitialLanguage = (): Language => {
   if (typeof window === 'undefined') return 'en';
   const stored = window.localStorage.getItem('language');
   if (stored === 'en' || stored === 'it') return stored;
-  const browserLang = window.navigator.language.toLowerCase();
-  return browserLang.startsWith('it') ? 'it' : 'en';
+  return 'en';
 };
 
 export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {

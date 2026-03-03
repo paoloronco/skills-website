@@ -5,7 +5,8 @@ import { languageLabels, uiTranslations } from '../locales/translations';
 
 const menuLinks = [
   { key: 'mainWebsite' as const, href: 'https://paoloronco.it' },
-  { key: 'github' as const, href: 'https://github.com/paoloronco/skills-website' }
+  { key: 'github' as const, href: 'https://github.com/paoloronco/skills-website' },
+  { key: 'linkedin' as const, href: 'https://www.linkedin.com/in/paolo-ronco-685a5722a/' }
 ];
 
 const languageOrder: Array<keyof typeof languageLabels> = ['en', 'it'];

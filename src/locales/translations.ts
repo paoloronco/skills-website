@@ -12,7 +12,8 @@ export const uiTranslations = {
     searchPlaceholder: 'Search skills…',
     header: {
       mainWebsite: 'Main Website',
-      github: 'GitHub'
+      github: 'GitHub',
+      linkedin: 'LinkedIn'
     },
     accessibility: {
       languageToggle: 'Switch language',
@@ -24,11 +25,12 @@ export const uiTranslations = {
   },
   it: {
     heroTitle: 'Paolo Ronco - TechSkills',
-    heroSubtitle: 'Analista di cybersecurity specializzato in difesa cloud, networking resiliente, automazione, AI operations e piattaforme digitali.',
+    heroSubtitle: 'Cybersecurity analyst specializzato in difesa cloud, networking resiliente, automazione, AI operations e piattaforme digitali.',
     searchPlaceholder: 'Cerca competenze…',
     header: {
-      mainWebsite: 'Sito principale',
-      github: 'GitHub'
+      mainWebsite: 'Main Website',
+      github: 'GitHub',
+      linkedin: 'LinkedIn'
     },
     accessibility: {
       languageToggle: 'Cambia lingua',
