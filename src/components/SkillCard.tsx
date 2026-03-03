@@ -68,7 +68,7 @@ const SkillCard: React.FC<SkillCardProps> = ({ skill, index, highlight }) => {
         filter: 'drop-shadow(0 15px 35px rgba(14, 165, 233, 0.35))'
       }}
       style={{ transformStyle: 'preserve-3d', willChange: 'transform', perspective: 1200 }}
-      className={`bg-gradient-to-br from-gray-800 via-gray-850 to-gray-900 border border-gray-700 rounded-xl overflow-hidden transition-all duration-300 ${
+      className={`h-full flex flex-col bg-gradient-to-br from-gray-800 via-gray-850 to-gray-900 border border-gray-700 rounded-xl overflow-hidden transition-all duration-300 ${
         hovered ? 'shadow-xl shadow-cyan-500/20' : 'shadow-md shadow-black/30'
       }`}
       onMouseEnter={() => {
@@ -81,7 +81,7 @@ const SkillCard: React.FC<SkillCardProps> = ({ skill, index, highlight }) => {
       }}
       onMouseMove={handleMouseMove}
     >
-      <div className="p-5">
+      <div className="p-5 flex flex-col h-full">
         <div className="flex justify-between items-start mb-3">
           <h3 className="text-lg font-semibold text-white">
             {highlightText(skill.name)}
@@ -91,22 +91,24 @@ const SkillCard: React.FC<SkillCardProps> = ({ skill, index, highlight }) => {
           />
         </div>
         
-        <p className="text-sm text-gray-400 mb-4">
+        <p className="text-sm text-gray-400 mb-4 flex-1">
           {highlightText(skill.description)}
         </p>
-        
-        <div className="w-full bg-gray-700 rounded-full h-1.5 overflow-hidden">
-          <div 
-            className="bg-gradient-to-r from-cyan-500 to-blue-500 h-1.5 rounded-full transition-all duration-1000 ease-out"
-            style={{
-              width: showProficiency ? `${skill.level}%` : '0%',
-              transitionDelay: '0.1s'
-            }}
-          />
-        </div>
-        <div className="flex justify-between mt-1.5">
-          <span className="text-xs text-gray-500">Proficiency</span>
-          <span className="text-xs text-gray-400">{skill.level}%</span>
+
+        <div className="mt-auto">
+          <div className="w-full bg-gray-700 rounded-full h-1.5 overflow-hidden">
+            <div 
+              className="bg-gradient-to-r from-cyan-500 to-blue-500 h-1.5 rounded-full transition-all duration-1000 ease-out"
+              style={{
+                width: showProficiency ? `${skill.level}%` : '0%',
+                transitionDelay: '0.1s'
+              }}
+            />
+          </div>
+          <div className="flex justify-between mt-1.5">
+            <span className="text-xs text-gray-500">Proficiency</span>
+            <span className="text-xs text-gray-400">{skill.level}%</span>
+          </div>
         </div>
       </div>
     </motion.div>
