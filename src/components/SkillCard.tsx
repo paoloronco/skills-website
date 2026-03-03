@@ -108,9 +108,16 @@ const SkillCard: React.FC<SkillCardProps> = ({ skill, index, highlight }) => {
     >
       <div className="p-5 flex flex-col h-full">
         <div className="flex justify-between items-start mb-3">
-          <h3 className="text-lg font-semibold text-[var(--text-primary)]">
-            {highlightText(skill.translations?.[language]?.name ?? skill.name)}
-          </h3>
+          <div className="flex flex-col gap-1">
+            <h3 className="text-lg font-semibold text-[var(--text-primary)]">
+              {highlightText(skill.translations?.[language]?.name ?? skill.name)}
+            </h3>
+            {skill.handsOn && (
+              <span className="text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full border border-emerald-400/40 text-emerald-300 bg-emerald-400/10 w-fit">
+                {copy.labels.handsOn}
+              </span>
+            )}
+          </div>
           <div 
             className={`h-2 w-2 rounded-full ${skill.level >= 75 ? 'bg-green-400' : skill.level >= 50 ? 'bg-yellow-400' : 'bg-blue-400'}`}
           />

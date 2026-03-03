@@ -5,6 +5,7 @@ const baseSkills: SkillCategory = {
     {
       name: "Google Cloud Platform",
       description: "Google's cloud computing services and infrastructure",
+      handsOn: true,
       level: 85
     },
     {
@@ -116,18 +117,20 @@ const baseSkills: SkillCategory = {
       name: "CNAPP Platforms",
       description: "Combining CNAPP blueprints with Wiz to secure build pipelines, cloud runtime, and compliance.",
       level: 90,
+      handsOn: true,
       subSkills: ["CNAPP Strategy", "Wiz (CNAPP)"]
     },
     {
       name: "SIEM Platforms",
       description: "Design, onboarding and detection engineering on Splunk Enterprise Security and Wazuh SIEM/XDR.",
       level: 70,
+      handsOn: true,
       subSkills: ["Splunk (SIEM)", "Wazuh (SIEM/XDR)"]
     },
     {
       name: "SOAR",
       description: "Security Orchestration, Automation and Response",
-      level: 70
+      level: 60
     },
     {
       name: "EDR/XDR",

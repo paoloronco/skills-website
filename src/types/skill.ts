@@ -4,6 +4,7 @@ export interface Skill {
   level: number; // 0 to 100
   yearsExperience?: number;
   subSkills?: string[];
+  handsOn?: boolean;
   translations?: {
     [lang: string]: {
       name?: string;

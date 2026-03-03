@@ -20,7 +20,8 @@ export const uiTranslations = {
       themeToggle: 'Toggle dark mode'
     },
     labels: {
-      proficiency: 'Proficiency'
+      proficiency: 'Proficiency',
+      handsOn: 'Hands-on'
     }
   },
   it: {
@@ -37,7 +38,8 @@ export const uiTranslations = {
       themeToggle: 'Attiva/disattiva tema scuro'
     },
     labels: {
-      proficiency: 'Competenza'
+      proficiency: 'Competenza',
+      handsOn: 'Esperienza pratica'
     }
   }
 } as const;
