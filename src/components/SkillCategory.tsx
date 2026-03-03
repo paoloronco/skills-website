@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import SkillCard from './SkillCard';
 import { Skill } from '../types/skill';
 import { getCategoryIcon } from '../utils/categoryIcons';
+import { ChevronDown } from 'lucide-react';
 
 interface SkillCategoryProps {
   category: string;
@@ -13,6 +14,37 @@ const SkillCategory: React.FC<SkillCategoryProps> = ({ category, skills, searchT
   const CategoryIcon = getCategoryIcon(category);
   const categoryId = category.replace(/\s+/g, '-').toLowerCase();
   const [isCollapsed, setIsCollapsed] = useState(false);
+  const [isDesktop, setIsDesktop] = useState(false);
+  const contentRef = useRef<HTMLDivElement>(null);
+  const [contentHeight, setContentHeight] = useState<number | null>(null);
+
+  useEffect(() => {
+    const updateLayout = () => {
+      if (typeof window === 'undefined') return;
+      const desktop = window.matchMedia('(min-width: 768px)').matches;
+      setIsDesktop(desktop);
+      if (desktop) {
+        setIsCollapsed(false);
+      }
+    };
+
+    updateLayout();
+    window.addEventListener('resize', updateLayout);
+    return () => window.removeEventListener('resize', updateLayout);
+  }, []);
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const updateHeight = () => {
+      if (contentRef.current) {
+        setContentHeight(contentRef.current.scrollHeight);
+      }
+    };
+
+    updateHeight();
+    window.addEventListener('resize', updateHeight);
+    return () => window.removeEventListener('resize', updateHeight);
+  }, [filteredSkills.length]);
   
   // Filter skills based on search term
   const filteredSkills = searchTerm
@@ -32,8 +64,13 @@ const SkillCategory: React.FC<SkillCategoryProps> = ({ category, skills, searchT
     <section id={categoryId} className="scroll-mt-20">
       <button
         type="button"
-        className="flex w-full items-center justify-between mb-4 group md:mb-8"
-        onClick={() => setIsCollapsed(prev => !prev)}
+        className="flex w-full items-center justify-between mb-4 group md:mb-8 md:cursor-default"
+        onClick={() => {
+          if (isDesktop) return;
+          setIsCollapsed(prev => !prev);
+        }}
+        aria-expanded={!isCollapsed}
+        aria-controls={`${categoryId}-content`}
       >
         <div className="flex items-center">
           <div
@@ -44,17 +81,27 @@ const SkillCategory: React.FC<SkillCategoryProps> = ({ category, skills, searchT
           </div>
           <h2 className="text-3xl font-bold text-[var(--text-primary)]">{category}</h2>
         </div>
-        <span
-          className="text-sm font-medium text-[var(--text-secondary)] md:hidden"
-        >
-          {isCollapsed ? 'Apri' : 'Chiudi'}
-        </span>
+        <ChevronDown
+          className={`w-5 h-5 text-[var(--text-secondary)] transition-transform duration-300 md:hidden ${
+            isCollapsed ? 'rotate-0' : 'rotate-180'
+          }`}
+        />
       </button>
       
       <div
-        className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 items-stretch transition-all duration-300 ${
-          isCollapsed ? 'max-h-0 overflow-hidden md:max-h-full' : 'max-h-full'
+        id={`${categoryId}-content`}
+        ref={contentRef}
+        className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 items-stretch transition-all duration-500 ease-in-out ${
+          isDesktop ? 'opacity-100' : isCollapsed ? 'opacity-0 pointer-events-none' : 'opacity-100'
         }`}
+        style={
+          isDesktop
+            ? undefined
+            : {
+                maxHeight: isCollapsed ? 0 : contentHeight ?? 'none',
+                overflow: 'hidden'
+              }
+        }
       >
         {filteredSkills.map((skill, index) => (
           <SkillCard 

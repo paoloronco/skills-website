@@ -1,6 +1,6 @@
 import { SkillCategory } from "../types/skill";
 
-export const skillsByCategory: SkillCategory = {
+const baseSkills: SkillCategory = {
   "Cloud Platforms & Architecture": [
     {
       name: "Google Cloud Platform (GCP)",
@@ -547,3 +547,21 @@ export const skillsByCategory: SkillCategory = {
     }
   ]
 };
+
+const orderedCategories = [
+  "Security & Zero Trust",
+  "Cloud Platforms & Architecture",
+  "Networking & Edge",
+  "DevOps & Platform Engineering",
+  "Automation & Orchestration",
+  "Observability & Analytics",
+  "AI & Machine Intelligence",
+  "Infrastructure & Operations",
+  "Software Development & Digital Platforms",
+  "Professional & Core Skills"
+] as const;
+
+export const skillsByCategory: SkillCategory = orderedCategories.reduce((acc, key) => {
+  acc[key] = baseSkills[key];
+  return acc;
+}, {} as SkillCategory);

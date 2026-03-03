@@ -31,7 +31,7 @@ const SkillsShowcase: React.FC<SkillsShowcaseProps> = ({ searchTerm, setSearchTe
           Paolo Ronco - TechSkills
         </h1>
         <p className="text-[var(--text-secondary)] md:text-lg mb-12 max-w-3xl">
-          Expertise in cloud platforms, cybersecurity, networking, DevOps, Automation & more.
+          Cybersecurity analyst specialized in cloud defense, resilient networking, automation, AI operations, and digital platforms.
         </p>
         
         <div className="relative w-full max-w-md mb-8">
