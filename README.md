@@ -31,7 +31,11 @@ The site presents Paolo Ronco's technical profile through categorized skill card
 ```text
 .
 |-- public/
-|   `-- favicon.ico
+|   |-- favicon.ico
+|   |-- robots.txt
+|   `-- sitemap.xml
+|-- scripts/
+|   `-- generate-seo.mjs
 |-- src/
 |   |-- components/
 |   |   |-- Footer.tsx
@@ -51,7 +55,9 @@ The site presents Paolo Ronco's technical profile through categorized skill card
 |   |-- utils/
 |   |   |-- categoryIcons.tsx
 |   |   |-- googleAnalytics.ts
-|   |   `-- motionProxy.tsx
+|   |   |-- metadata.ts
+|   |   |-- motionProxy.tsx
+|   |   `-- siteUrl.ts
 |   |-- App.tsx
 |   |-- index.css
 |   |-- main.tsx
@@ -131,6 +137,26 @@ The repository includes `.env.example` without private values. Local values shou
 
 Important: Google Analytics Measurement IDs are visible in the browser once deployed because tracking runs client-side. Keeping the ID in an environment variable prevents committing it to the public repository, but it does not make it secret at runtime.
 
+### Dual URL Hosting
+
+The same build is configured to run at both:
+
+```text
+https://skills.paoloronco.it/
+https://paoloronco.it/skills/
+```
+
+These variables control URL generation, metadata, robots, and sitemap output:
+
+```env
+VITE_ROOT_SITE_URL=https://skills.paoloronco.it
+VITE_SUBPATH_SITE_URL=https://paoloronco.it
+VITE_SUBPATH_BASE=/skills
+VITE_CANONICAL_URL=https://paoloronco.it/skills/
+```
+
+`VITE_CANONICAL_URL` is the preferred SEO URL. The default canonical target is the `/skills/` URL on the root domain, while the subdomain remains fully functional.
+
 ## Skill Data
 
 The main skill catalog is maintained in:
@@ -179,7 +205,7 @@ This project is suitable for static hosting.
 
 ### Vercel
 
-The repository includes `vercel.json` with security-related response headers.
+The repository includes `vercel.json` with security headers and SPA rewrites for both the subdomain root and `/skills` path.
 
 Recommended Vercel settings:
 
@@ -192,6 +218,19 @@ If Google Analytics should be enabled in production, add this environment variab
 ```env
 VITE_GA_MEASUREMENT_ID=G-XXXXXXXXXX
 ```
+
+Add the dual URL variables from the environment section as production environment variables if the deployed domains or canonical preference change. The defaults already match `skills.paoloronco.it` and `paoloronco.it/skills`.
+
+The `/skills/*` rewrites intentionally alias built assets and static files before the SPA fallback:
+
+- `/skills/assets/*` -> `/assets/*`
+- `/skills/api/*` -> `/api/*`
+- `/skills/favicon.ico` -> `/favicon.ico`
+- `/skills/robots.txt` -> `/robots.txt`
+- `/skills/sitemap.xml` -> `/sitemap.xml`
+- `/skills/*` -> `/index.html`
+
+The final root fallback keeps direct refreshes and client-side routes working on `skills.paoloronco.it/*`.
 
 ## Security Headers
 

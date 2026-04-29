@@ -2,9 +2,41 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <script>
+      (function () {
+        var configuredSubpath = '__APP_SUBPATH_BASE__';
+        var subpath = configuredSubpath || '/skills';
+        subpath = '/' + subpath.replace(/^\/+|\/+$/g, '');
+        var pathname = window.location.pathname;
+        var isSubpath = pathname === subpath || pathname.indexOf(subpath + '/') === 0;
+        var base = document.createElement('base');
+        base.href = isSubpath ? subpath + '/' : '/';
+        document.head.appendChild(base);
+      })();
+    </script>
+    <link rel="icon" type="image/x-icon" href="./favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Paolo Ronco Skills</title>
+    <meta
+      name="description"
+      content="Paolo Ronco's technical skills, tools, languages, frameworks, and professional technology stack."
+    />
+    <link rel="canonical" href="__CANONICAL_URL__" />
+    <link rel="alternate" href="__ROOT_ALTERNATE_URL__" data-site-alternate="root" />
+    <link rel="alternate" href="__SUBPATH_ALTERNATE_URL__" data-site-alternate="subpath" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Paolo Ronco Skills" />
+    <meta
+      property="og:description"
+      content="Paolo Ronco's technical skills, tools, languages, frameworks, and professional technology stack."
+    />
+    <meta property="og:url" content="__CANONICAL_URL__" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Paolo Ronco Skills" />
+    <meta
+      name="twitter:description"
+      content="Paolo Ronco's technical skills, tools, languages, frameworks, and professional technology stack."
+    />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">

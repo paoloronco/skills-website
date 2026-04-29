@@ -4,7 +4,9 @@ import App from './App.tsx';
 import './index.css';
 import { LanguageProvider } from './contexts/LanguageContext.tsx';
 import { initGoogleAnalytics } from './utils/googleAnalytics.ts';
+import { syncDocumentMetadata } from './utils/metadata.ts';
 
+syncDocumentMetadata();
 initGoogleAnalytics();
 
 createRoot(document.getElementById('root')!).render(
